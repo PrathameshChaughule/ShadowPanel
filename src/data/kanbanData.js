@@ -1,0 +1,142 @@
+export const kanbanData = {
+  todo: [
+    {
+      id: 1,
+      title: "Settings Page",
+      description: "Implement the settings page to manage user preferences",
+      priority: "Low",
+      priorityColor: "green",
+      progress: "0%",
+      progressColor: "red",
+      team: [
+        "/assets/images/avatar1.jpg",
+        "/assets/images/avatar2.jpg",
+        "/assets/images/avatar3.jpg",
+        "/assets/images/avatar4.jpg",
+      ],
+      imgCount: "+2",
+      comments: 0,
+      attachments: 0,
+    },
+    {
+      id: 2,
+      title: "Applications Page",
+      description:
+        "Implement the Applications page to manage tools for seamless productivity.",
+      priority: "Medium",
+      priorityColor: "yellow",
+      progress: "0%",
+      progressColor: "red",
+      team: [
+        "/assets/images/avatar5.jpg",
+        "/assets/images/avatar6.jpg",
+        "/assets/images/avatar7.jpg",
+        "/assets/images/avatar13.jpg",
+      ],
+      imgCount: "+4",
+      comments: 0,
+      attachments: 0,
+    },
+  ],
+
+  inprogress: [
+    {
+      id: 3,
+      title: "Error Pages",
+      description:
+        "Design and integrate custom error pages for user experience during issues.",
+      priority: "Medium",
+      priorityColor: "yellow",
+      progress: "40%",
+      progressColor: "#24CDBA",
+      team: [
+        "/assets/images/avatar1.jpg",
+        "/assets/images/avatar2.jpg",
+        "/assets/images/avatar3.jpg",
+        "/assets/images/avatar4.jpg",
+      ],
+      imgCount: "+3",
+      comments: 8,
+      attachments: 3,
+    },
+    {
+      id: 4,
+      title: "UI Pages",
+      description:
+        "Develop and refine UI pages to ensure a user-friendly and intuitive interface",
+      priority: "Low",
+      priorityColor: "green",
+      progress: "70%",
+      progressColor: "#FE9738",
+      team: [
+        "/assets/images/avatar2.jpg",
+        "/assets/images/avatar3.jpg",
+        "/assets/images/avatar4.jpg",
+        "/assets/images/avatar6.jpg",
+      ],
+      imgCount: "+1",
+      comments: 10,
+      attachments: 6,
+    },
+    {
+      id: 5,
+      title: "Customizer",
+      description:
+        "Build a customizer panel to allow users to personalize layout, theme, and UI settings",
+      priority: "High",
+      priorityColor: "red",
+      progress: "50%",
+      progressColor: "#0080FF",
+      team: [
+        "/assets/images/avatar1.jpg",
+        "/assets/images/avatar3.jpg",
+        "/assets/images/avatar7.jpg",
+        "/assets/images/avatar2.jpg",
+      ],
+      imgCount: "+2",
+      comments: 12,
+      attachments: 4,
+    },
+  ],
+
+  completed: [
+    {
+      id: 6,
+      title: "Dashboard",
+      description:
+        "Create an interactive dashboard to display key metrics and system summaries",
+      priority: "Low",
+      priorityColor: "green",
+      progress: "100%",
+      progressColor: "#01B664",
+      team: [
+        "/assets/images/avatar1.jpg",
+        "/assets/images/avatar2.jpg",
+        "/assets/images/avatar3.jpg",
+        "/assets/images/avatar4.jpg",
+      ],
+      imgCount: "+1",
+      comments: 15,
+      attachments: 12,
+    },
+    {
+      id: 7,
+      title: "Authentication Pages",
+      description:
+        "Develop authentication pages including login, registration & password management",
+      priority: "Medium",
+      priorityColor: "yellow",
+      progress: "100%",
+      progressColor: "#01B664",
+      team: [
+        "/assets/images/avatar1.jpg",
+        "/assets/images/avatar6.jpg",
+        "/assets/images/avatar7.jpg",
+        "/assets/images/avatar8.jpg",
+      ],
+      imgCount: "+4",
+      comments: 10,
+      attachments: 6,
+    },
+  ],
+};
