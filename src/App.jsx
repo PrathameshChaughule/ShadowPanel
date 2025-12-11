@@ -14,6 +14,23 @@ import SocialFeed from "./pages/Application/SocialFeed";
 import ToDo from "./pages/Application/ToDo";
 import VideoCall from "./pages/Application/VideoCall";
 import VoiceCall from "./pages/Application/VoiceCall";
+import Members from "./pages/Members/Members";
+import Teams from "./pages/Teams/Teams";
+import Clients from "./pages/Clients/Clients";
+import RolesPermission from "./pages/Roles & Permission/RolesPermission";
+import ActivityLogs from "./pages/Activity Logs/ActivityLogs";
+import Notifications from "./pages/Notifications/Notifications";
+import Settings from "./pages/Settings/ProfileSettings";
+import Login from "./pages/Authentication/Login";
+import Register from "./pages/Authentication/Register";
+import ForgetPassword from "./pages/Authentication/ForgetPassword";
+import ResetPassword from "./pages/Authentication/ResetPassword";
+import EmailVerification from "./pages/Authentication/EmailVerification";
+import StepVerification from "./pages/Authentication/StepVerification";
+import ErrorPages from "./pages/Authentication/ErrorPages";
+import LockScreen from "./pages/Authentication/LockScreen";
+import GeneralPages from "./pages/Authentication/GeneralPages";
+import StarterPage from "./pages/Authentication/StarterPage";
 
 function App() {
   return (
@@ -35,6 +52,23 @@ function App() {
           <Route path="/todo" element={<ToDo />} />
           <Route path="/videocall" element={<VideoCall />} />
           <Route path="/voicecall" element={<VoiceCall />} />
+          <Route path="/members" element={<Members />} />
+          <Route path="/teams" element={<Teams />} />
+          <Route path="/clients" element={<Clients />} />
+          <Route path="/rolesPermission" element={<RolesPermission />} />
+          <Route path="/activityLogs" element={<ActivityLogs />} />
+          <Route path="/notifications" element={<Notifications />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgetPass" element={<ForgetPassword />} />
+          <Route path="/resetPass" element={<ResetPassword />} />
+          <Route path="/emailVar" element={<EmailVerification />} />
+          <Route path="/2step" element={<StepVerification />} />
+          <Route path="/error" element={<ErrorPages />} />
+          <Route path="/lockScreen" element={<LockScreen />} />
+          <Route path="/general" element={<GeneralPages />} />
+          <Route path="/starter" element={<StarterPage />} />
         </Routes>
       </BrowserRouter>
     </div>

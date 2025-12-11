@@ -26,7 +26,7 @@ function Contacts() {
             {contactData.map((item) => (
               <div
                 key={item.id}
-                className="flex flex-col gap-4 bg-white p-5 w-[80%] lg:w-[45%] xl:w-[28%] overflow-hidden rounded shadow shadow-gray-300"
+                className="flex flex-col gap-4 bg-white p-5 w-[80%] lg:w-[45%] xl:w-[28%] overflow-hidden rounded dark:bg-[#030318] dark:border-[#011743]"
               >
                 <div className="flex gap-2 items-center">
                   <img src={item.image} className="w-10 rounded" alt="" />
@@ -39,24 +39,24 @@ function Contacts() {
                   <div className="flex gap-1">
                     <NavLink
                       to="/voicecall"
-                      className="p-2 text-xl rounded bg-gray-100 hover:bg-gray-200 w-fit"
+                      className="p-2 text-xl rounded bg-gray-100 hover:bg-gray-200 dark:bg-[#3C4056] dark:hover:bg-[#505572] w-fit"
                     >
                       <TbPhoneCalling />
                     </NavLink>
                     <NavLink
                       to="/chat"
-                      className="p-2 text-xl rounded bg-gray-100 hover:bg-gray-200 w-fit"
+                      className="p-2 text-xl rounded bg-gray-100 hover:bg-gray-200 dark:bg-[#3C4056] dark:hover:bg-[#505572] w-fit"
                     >
                       <TbMessageChatbot />
                     </NavLink>
                     <NavLink
                       to="/videocall"
-                      className="p-2 text-xl rounded bg-gray-100 hover:bg-gray-200 w-fit"
+                      className="p-2 text-xl rounded bg-gray-100 hover:bg-gray-200 dark:bg-[#3C4056] dark:hover:bg-[#505572] w-fit"
                     >
                       <TbVideoPlus />
                     </NavLink>
                   </div>
-                  <NavLink className="p-2 hover:bg-gray-100 text-xl rounded border border-gray-300 w-fit">
+                  <NavLink className="p-2 hover:bg-gray-100 text-xl rounded border dark:border-[#011743] dark:hover:bg-[#011743] border-gray-300 w-fit">
                     <BsThreeDotsVertical />
                   </NavLink>
                 </div>

@@ -1,82 +1,91 @@
-import { CiSearch } from "react-icons/ci";
 import Navbar from "../../components/Navbar";
-import { IoMdTrendingUp } from "react-icons/io";
-import { LuBox, LuLayoutGrid } from "react-icons/lu";
-import {
-  TbListTree,
-  TbSortDescending2,
-  TbUserBolt,
-  TbUserShare,
-  TbUserX,
-} from "react-icons/tb";
+import { CiSearch } from "react-icons/ci";
+import { IoMdTrendingDown, IoMdTrendingUp } from "react-icons/io";
+import { LuLayoutGrid } from "react-icons/lu";
+import { TbListTree, TbSortDescending2 } from "react-icons/tb";
 import { FaPlus } from "react-icons/fa";
-import TableList from "../../components/Projects/TableList";
-import TableGrid from "../../components/Projects/TableGrid";
 import { useState } from "react";
+import MemberTableList from "./MemberTableList";
+import MemberTableGrid from "./MemberTableGrid";
 
-function Projects() {
-  const [show, setShow] = useState("one"); 
+function Members() {
+  const [show, setShow] = useState("one");
   return (
     <div>
       <Navbar>
         <div className="flex flex-col gap-7 bg-white dark:bg-[#0C0C20] rounded p-3 sm:p-[24px]">
           <div className="flex text-sm p-2 justify-around sm:justify-between">
-            <h4 className="md:text-[1.125rem] font-bold">Projects</h4>
+            <h4 className="md:text-[1.125rem] font-bold">Members</h4>
             <p>
-              Home &gt; Applications &gt;
-              <span className="md:text-[1rem] font-medium"> Projects</span>
+              Home &gt;
+              <span className="md:text-[1rem] font-medium"> Members</span>
             </p>
           </div>
           <div className="flex justify-around flex-wrap gap-7">
             <div className=" p-5 pt-4 shadow shadow-gray-400 dark:shadow-[#011743] dark:bg-[#030318] rounded w-[23%]">
-              <div className="mb-3 flex items-center justify-between relative">
+              <div className="flex items-center justify-between relative">
+                <div className="text-3xl p-1.5 rounded text-white z-10">
+                  <img src="/assets/images/member-01.svg" alt="" />
+                </div>
                 <div>
-                  <p className="text-gray-400 ">Total Projects</p>
+                  <p className="text-gray-400 ">Total Employees</p>
                   <div className="flex gap-2">
                     <h4 className="font-bold text-xl">2520 </h4>
-                    <div className="flex items-center text-center text-sm gap-1 text-green-500 font-semibold">
-                      <IoMdTrendingUp /> <span>15.2%</span>
-                    </div>
                   </div>
                 </div>
-                <div className="text-3xl p-1.5 rounded text-white bg-blue-500 z-10">
-                  <LuBox />
+                <div className="flex items-center mt-6.5 text-center text-sm gap-1 text-green-500 font-semibold">
+                  <IoMdTrendingUp /> <span>22.5%</span>
                 </div>
               </div>
               <div className="flex text-[16px] font-medium"></div>
             </div>
             <div className=" p-5 pt-4 shadow shadow-gray-400 dark:shadow-[#011743] dark:bg-[#030318] rounded w-[23%]">
-              <div className="mb-3 flex items-center justify-between">
-                <div>
-                  <p className="text-gray-400 ">Active</p>
-                  <h4 className="font-bold text-xl">2502</h4>
+              <div className="flex items-center justify-between relative">
+                <div className="text-3xl p-1.5 rounded text-white z-10">
+                  <img src="/assets/images/member-02.svg" alt="" />
                 </div>
-                <div className="text-3xl p-1.5 rounded text-white bg-gray-500 z-10">
-                  <TbUserBolt />
+                <div>
+                  <p className="text-gray-400 ">Active Employees</p>
+                  <div className="flex gap-2">
+                    <h4 className="font-bold text-xl">2000 </h4>
+                  </div>
+                </div>
+                <div className="flex items-center mt-6.5 text-center text-sm gap-1 text-green-500 font-semibold">
+                  <IoMdTrendingUp /> <span>15.2%</span>
                 </div>
               </div>
               <div className="flex text-[16px] font-medium"></div>
             </div>
             <div className=" p-5 pt-4 shadow shadow-gray-400 dark:shadow-[#011743] dark:bg-[#030318] rounded w-[23%]">
-              <div className="mb-3 flex items-center justify-between">
-                <div>
-                  <p className="text-gray-400 ">InProgress</p>
-                  <h4 className="font-bold text-xl">350</h4>
+              <div className="flex items-center justify-between relative">
+                <div className="text-3xl p-1.5 rounded text-white z-10">
+                  <img src="/assets/images/member-03.svg" alt="" />
                 </div>
-                <div className="text-3xl p-1.5 rounded text-white bg-sky-400 z-10">
-                  <TbUserX />
+                <div>
+                  <p className="text-gray-400 ">Inactive Employees</p>
+                  <div className="flex gap-2">
+                    <h4 className="font-bold text-xl">350 </h4>
+                  </div>
+                </div>
+                <div className="flex items-center mt-6.5 text-center text-sm gap-1 text-green-500 font-semibold">
+                  <IoMdTrendingUp /> <span>16.3%</span>
                 </div>
               </div>
               <div className="flex text-[16px] font-medium"></div>
             </div>
             <div className=" p-5 pt-4 shadow shadow-gray-400 dark:shadow-[#011743] dark:bg-[#030318] rounded w-[23%]">
-              <div className="mb-3 flex items-center justify-between">
-                <div>
-                  <p className="text-gray-400 ">Completed</p>
-                  <h4 className="font-bold text-xl">170</h4>
+              <div className="flex items-center justify-between relative">
+                <div className="text-3xl p-1.5 rounded text-white z-10">
+                  <img src="/assets/images/member-04.svg" alt="" />
                 </div>
-                <div className="text-3xl p-1.5 rounded text-white bg-green-500 z-10">
-                  <TbUserShare />
+                <div>
+                  <p className="text-gray-400 ">Achieved Employees</p>
+                  <div className="flex gap-2">
+                    <h4 className="font-bold text-xl">170 </h4>
+                  </div>
+                </div>
+                <div className="flex items-center mt-6.5 text-center text-sm gap-1 text-red-500 font-semibold">
+                  <IoMdTrendingDown /> <span>10.5%</span>
                 </div>
               </div>
               <div className="flex text-[16px] font-medium"></div>
@@ -129,8 +138,8 @@ function Projects() {
             </div>
           </div>
           <div>
-            {show === "one" && <TableList />}
-            {show === "two" && <TableGrid />}
+            {show === "one" && <MemberTableList />}
+            {show === "two" && <MemberTableGrid />}
           </div>
         </div>
       </Navbar>
@@ -138,4 +147,4 @@ function Projects() {
   );
 }
 
-export default Projects;
+export default Members;

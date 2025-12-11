@@ -1,6 +1,6 @@
 import React from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { project } from "../data/projectData";
+import { project } from "../../data/projectData";
 
 function TableList() {
   return (

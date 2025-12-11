@@ -57,6 +57,74 @@ function SidebarContent() {
     ) {
       setOpenMenu("apps");
     }
+
+    if (location.pathname.startsWith("/members")) {
+      setOpenMenu("members");
+    }
+
+    if (location.pathname.startsWith("/teams")) {
+      setOpenMenu("teams");
+    }
+
+    if (location.pathname.startsWith("/clients")) {
+      setOpenMenu("clients");
+    }
+
+    if (location.pathname.startsWith("/roles")) {
+      setOpenMenu("roles");
+    }
+
+    if (location.pathname.startsWith("/activity")) {
+      setOpenMenu("activity");
+    }
+
+    if (location.pathname.startsWith("/notifications")) {
+      setOpenMenu("notifications");
+    }
+
+    if (location.pathname.startsWith("/settings")) {
+      setOpenMenu("settings");
+    }
+
+    if (location.pathname.startsWith("/login")) {
+      setOpenMenu("login");
+    }
+
+    if (location.pathname.startsWith("/register")) {
+      setOpenMenu("register");
+    }
+
+    if (location.pathname.startsWith("/forgetPass")) {
+      setOpenMenu("forgetPass");
+    }
+
+    if (location.pathname.startsWith("/resetPass")) {
+      setOpenMenu("resetPass");
+    }
+
+    if (location.pathname.startsWith("/emailVer")) {
+      setOpenMenu("emailVer");
+    }
+
+    if (location.pathname.startsWith("/2step")) {
+      setOpenMenu("2step");
+    }
+
+    if (location.pathname.startsWith("/error")) {
+      setOpenMenu("error");
+    }
+
+    if (location.pathname.startsWith("/lockScreen")) {
+      setOpenMenu("lockScreen");
+    }
+
+    if (location.pathname.startsWith("/general")) {
+      setOpenMenu("general");
+    }
+
+    if (location.pathname.startsWith("/starter")) {
+      setOpenMenu("starter");
+    }
   }, [location.pathname]);
   return (
     <>
@@ -339,6 +407,7 @@ function SidebarContent() {
           <span className="text-sm font-semibold">Workforce</span>
 
           <NavLink
+            to="/members"
             onClick={() => {
               toggle("members");
             }}
@@ -356,6 +425,7 @@ function SidebarContent() {
             </span>
           </NavLink>
           <NavLink
+            to="/teams"
             onClick={() => {
               toggle("teams");
             }}
@@ -373,6 +443,7 @@ function SidebarContent() {
             </span>
           </NavLink>
           <NavLink
+            to="/clients"
             onClick={() => {
               toggle("clients");
             }}
@@ -390,6 +461,7 @@ function SidebarContent() {
             </span>
           </NavLink>
           <NavLink
+            to="/rolesPermission"
             onClick={() => {
               toggle("roles");
             }}
@@ -407,6 +479,7 @@ function SidebarContent() {
             </span>
           </NavLink>
           <NavLink
+            to="/activityLogs"
             onClick={() => {
               toggle("activity");
             }}
@@ -428,6 +501,7 @@ function SidebarContent() {
           <span className="text-sm font-semibold">Management</span>
 
           <NavLink
+            to="/notifications"
             onClick={() => {
               toggle("notification");
             }}
@@ -445,6 +519,7 @@ function SidebarContent() {
             </span>
           </NavLink>
           <NavLink
+            to="/settings"
             onClick={() => {
               toggle("settings");
             }}
@@ -466,6 +541,7 @@ function SidebarContent() {
           <span className="text-sm font-semibold">Pages</span>
 
           <NavLink
+            to="/login"
             onClick={() => {
               toggle("login");
             }}
@@ -483,6 +559,7 @@ function SidebarContent() {
             </span>
           </NavLink>
           <NavLink
+            to="/register"
             onClick={() => {
               toggle("register");
             }}
@@ -500,6 +577,7 @@ function SidebarContent() {
             </span>
           </NavLink>
           <NavLink
+            to="/forgetPass"
             onClick={() => {
               toggle("forgetPass");
             }}
@@ -517,6 +595,7 @@ function SidebarContent() {
             </span>
           </NavLink>
           <NavLink
+            to="/resetPass"
             onClick={() => {
               toggle("resetPass");
             }}
@@ -534,6 +613,7 @@ function SidebarContent() {
             </span>
           </NavLink>
           <NavLink
+            to="/emailVer"
             onClick={() => {
               toggle("emailVer");
             }}
@@ -551,6 +631,7 @@ function SidebarContent() {
             </span>
           </NavLink>
           <NavLink
+            to="/2step"
             onClick={() => {
               toggle("2step");
             }}
@@ -568,6 +649,7 @@ function SidebarContent() {
             </span>
           </NavLink>
           <NavLink
+            to="/error"
             onClick={() => {
               toggle("error");
             }}
@@ -585,6 +667,7 @@ function SidebarContent() {
             </span>
           </NavLink>
           <NavLink
+            to="/lockScreen"
             onClick={() => {
               toggle("lockScreen");
             }}
@@ -602,6 +685,7 @@ function SidebarContent() {
             </span>
           </NavLink>
           <NavLink
+            to="/general"
             onClick={() => {
               toggle("general");
             }}
@@ -619,6 +703,7 @@ function SidebarContent() {
             </span>
           </NavLink>
           <NavLink
+            to="/starter"
             onClick={() => {
               toggle("starter");
             }}

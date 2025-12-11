@@ -2,7 +2,7 @@ import React from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { GoClock } from "react-icons/go";
 import { SlCalender } from "react-icons/sl";
-import { project } from "../data/projectData";
+import { project } from "../../data/projectData";
 
 function TableGrid() {
   return (
@@ -31,7 +31,10 @@ function TableGrid() {
               <div className="h-1 bg-gray-300 rounded mt-1">
                 <div
                   className={`h-1 rounded`}
-                  style={{ width: `${item.progStyle}%`, backgroundColor: `${item.color}` }}
+                  style={{
+                    width: `${item.progStyle}%`,
+                    backgroundColor: `${item.color}`,
+                  }}
                 ></div>
               </div>
             </div>
