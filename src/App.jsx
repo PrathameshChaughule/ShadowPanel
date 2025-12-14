@@ -20,7 +20,6 @@ import Clients from "./pages/Clients/Clients";
 import RolesPermission from "./pages/Roles & Permission/RolesPermission";
 import ActivityLogs from "./pages/Activity Logs/ActivityLogs";
 import Notifications from "./pages/Notifications/Notifications";
-import Settings from "./pages/Settings/ProfileSettings";
 import Login from "./pages/Authentication/Login";
 import Register from "./pages/Authentication/Register";
 import ForgetPassword from "./pages/Authentication/ForgetPassword";
@@ -31,6 +30,7 @@ import ErrorPages from "./pages/Authentication/ErrorPages";
 import LockScreen from "./pages/Authentication/LockScreen";
 import GeneralPages from "./pages/Authentication/GeneralPages";
 import StarterPage from "./pages/Authentication/StarterPage";
+import Settings from "./pages/Settings/Settings";
 
 function App() {
   return (
@@ -63,7 +63,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/forgetPass" element={<ForgetPassword />} />
           <Route path="/resetPass" element={<ResetPassword />} />
-          <Route path="/emailVar" element={<EmailVerification />} />
+          <Route path="/emailVer" element={<EmailVerification />} />
           <Route path="/2step" element={<StepVerification />} />
           <Route path="/error" element={<ErrorPages />} />
           <Route path="/lockScreen" element={<LockScreen />} />

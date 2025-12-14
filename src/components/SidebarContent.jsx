@@ -503,12 +503,12 @@ function SidebarContent() {
           <NavLink
             to="/notifications"
             onClick={() => {
-              toggle("notification");
+              toggle("notifications");
             }}
             className={`flex items-center gap-2 mt-2 px-4 p-2 w-full
               hover:text-blue-600 dark:text-[#8B9CB3] cursor-pointer transition rounded-lg justify-between
               ${
-                openMenu === "notification"
+                openMenu === "notifications"
                   ? "text-indigo-600 dark:text-[#D8D8DD] dark:bg-[#080B2C] dark:border-indigo-600 font-semibold bg-blue-100 border-l-[3px]"
                   : "text-gray-600"
               }`}

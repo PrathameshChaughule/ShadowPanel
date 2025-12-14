@@ -1,0 +1,38 @@
+export const rolesData = [
+  {
+    id: 1,
+    roleName: "Owner",
+    createdOn: "11 May 2025, 12:00 PM",
+    noOfUsers: 1,
+    status: "Active",
+    statusColor: "#16a34a",
+    statusBg: "#dcfce7",
+  },
+  {
+    id: 2,
+    roleName: "Admin",
+    createdOn: "11 May 2025, 11:52 AM",
+    noOfUsers: 2,
+    status: "Active",
+    statusColor: "#16a34a",
+    statusBg: "#dcfce7",
+  },
+  {
+    id: 3,
+    roleName: "Manager",
+    createdOn: "11 May 2025, 11:30 AM",
+    noOfUsers: 1,
+    status: "Active",
+    statusColor: "#16a34a",
+    statusBg: "#dcfce7",
+  },
+  {
+    id: 4,
+    roleName: "User",
+    createdOn: "11 May 2025, 11:00 AM",
+    noOfUsers: 2,
+    status: "Active",
+    statusColor: "#16a34a",
+    statusBg: "#dcfce7",
+  },
+];
