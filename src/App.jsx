@@ -27,9 +27,6 @@ import ResetPassword from "./pages/Authentication/ResetPassword";
 import EmailVerification from "./pages/Authentication/EmailVerification";
 import StepVerification from "./pages/Authentication/StepVerification";
 import ErrorPages from "./pages/Authentication/ErrorPages";
-import LockScreen from "./pages/Authentication/LockScreen";
-import GeneralPages from "./pages/Authentication/GeneralPages";
-import StarterPage from "./pages/Authentication/StarterPage";
 import Settings from "./pages/Settings/Settings";
 
 function App() {
@@ -66,9 +63,6 @@ function App() {
           <Route path="/emailVer" element={<EmailVerification />} />
           <Route path="/2step" element={<StepVerification />} />
           <Route path="/error" element={<ErrorPages />} />
-          <Route path="/lockScreen" element={<LockScreen />} />
-          <Route path="/general" element={<GeneralPages />} />
-          <Route path="/starter" element={<StarterPage />} />
         </Routes>
       </BrowserRouter>
     </div>

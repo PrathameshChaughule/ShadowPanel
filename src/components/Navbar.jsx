@@ -47,7 +47,7 @@ function Navbar({ children }) {
           </div>
         </div>
 
-        <nav className="pt-1 px-4 max-h-165 m-1 overflow-y-auto">
+        <nav className="pt-1 px-4 max-h-screen xl:max-h-165 m-1 overflow-y-auto">
           <SidebarContent />
         </nav>
       </aside>

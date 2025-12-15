@@ -91,56 +91,64 @@ function ToDo() {
                     </div>
                   </div>
                 </div>
-                <table className="border dark:border-[#011743] dark:bg-[#030318] w-full my-2 align-middle items-center">
-                  <tr className="bg-gray-200 font-semibold border dark:bg-[#030318] dark:border-[#011743]">
-                    <th className="text-start pl-4 py-3">Task Title</th>
-                    <th className="text-start">Created Date</th>
-                    <th className="text-start">Status</th>
-                    <th className="text-start">Due date</th>
-                    <th className="text-start pr-9">Priority</th>
-                    <th className="text-start pr-10">Progress</th>
-                    <th> </th>
-                  </tr>
-                  {todo.map((item) => (
-                    <tr
-                      key={item.id}
-                      className="border-b dark:border-[#011743]"
-                    >
-                      <td className="p-3">
-                        <p className="text-[15px] w-fit dark:text-[#DBE0E6] text-[#6D777F] font-semibold hover:text-blue-600 cursor-pointer">
-                          {item.title}
-                        </p>
-                      </td>
-                      <td className="text-[#6D777F] dark:text-[#DBE0E6] pr-7">
-                        {item.createdDate}
-                      </td>
-                      <td className="pr-4">
-                        <div
-                          className={`px-2 pb-0.5 rounded w-fit`}
-                          style={{ backgroundColor: `${item.statusColor}` }}
-                        >
-                          <span className="text-white dark:text-[#DBE0E6]">{item.status}</span>
-                        </div>
-                      </td>
-                      <td className="text-[#6D777F] dark:text-[#DBE0E6] pr-5">{item.dueDate}</td>
-                      <td>
-                        <div
-                          className={`px-2 rounded w-fit dark:text-[#DBE0E6] text-white pb-0.5`}
-                          style={{ backgroundColor: `${item.priorityColor}` }}
-                        >
-                          <span>{item.priority}</span>
-                        </div>
-                      </td>
-                      <td className="flex gap-1 items-center pt-1">
-                        <CircularProgress progress={item.progress} />
-                        <span className="text-[#6D777F]">{item.progress}%</span>
-                      </td>
-                      <td className="pr-4">
-                        <BsThreeDotsVertical className="cursor-pointer hover:text-gray-500" />
-                      </td>
+                <div className="overflow-x-auto w-[90vw] sm:w-[70vw] xl:w-full">
+                  <table className="min-w-300 xl:w-full border-collapse whitespace-nowrap border dark:border-[#011743] dark:bg-[#030318] w-full my-2 align-middle items-center">
+                    <tr className="bg-gray-200 font-semibold border dark:bg-[#030318] dark:border-[#011743]">
+                      <th className="text-start pl-4 py-3">Task Title</th>
+                      <th className="text-start">Created Date</th>
+                      <th className="text-start">Status</th>
+                      <th className="text-start">Due date</th>
+                      <th className="text-start pr-9">Priority</th>
+                      <th className="text-start pr-10">Progress</th>
+                      <th> </th>
                     </tr>
-                  ))}
-                </table>
+                    {todo.map((item) => (
+                      <tr
+                        key={item.id}
+                        className="border-b dark:border-[#011743]"
+                      >
+                        <td className="p-3">
+                          <p className="text-[15px] w-fit dark:text-[#DBE0E6] text-[#6D777F] font-semibold hover:text-blue-600 cursor-pointer">
+                            {item.title}
+                          </p>
+                        </td>
+                        <td className="text-[#6D777F] dark:text-[#DBE0E6] pr-7">
+                          {item.createdDate}
+                        </td>
+                        <td className="pr-4">
+                          <div
+                            className={`px-2 pb-0.5 rounded w-fit`}
+                            style={{ backgroundColor: `${item.statusColor}` }}
+                          >
+                            <span className="text-white dark:text-[#DBE0E6]">
+                              {item.status}
+                            </span>
+                          </div>
+                        </td>
+                        <td className="text-[#6D777F] dark:text-[#DBE0E6] pr-5">
+                          {item.dueDate}
+                        </td>
+                        <td>
+                          <div
+                            className={`px-2 rounded w-fit dark:text-[#DBE0E6] text-white pb-0.5`}
+                            style={{ backgroundColor: `${item.priorityColor}` }}
+                          >
+                            <span>{item.priority}</span>
+                          </div>
+                        </td>
+                        <td className="flex gap-1 items-center pt-1">
+                          <CircularProgress progress={item.progress} />
+                          <span className="text-[#6D777F]">
+                            {item.progress}%
+                          </span>
+                        </td>
+                        <td className="pr-4">
+                          <BsThreeDotsVertical className="cursor-pointer hover:text-gray-500" />
+                        </td>
+                      </tr>
+                    ))}
+                  </table>
+                </div>
               </div>
             </div>
           </div>

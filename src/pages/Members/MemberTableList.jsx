@@ -5,8 +5,8 @@ import { members } from "../../data/membersData";
 function MemberTableList() {
   return (
     <div>
-      <div className="">
-        <table className="border border-[#D1D5DC] dark:border-[#011743] whitespace-nowrap">
+      <div className="overflow-x-auto w-[90vw] sm:w-[70vw] xl:w-full">
+        <table className="min-w-300 lg:w-full border-collapse border border-[#D1D5DC] dark:border-[#011743] whitespace-nowrap">
           <tr className="bg-gray-300 dark:bg-[#030318] border-b border-[#D1D5DC] dark:border-[#011743]">
             <th className="text-start px-4 py-3 w-55">Name</th>
             <th className="text-start w-50">Team</th>

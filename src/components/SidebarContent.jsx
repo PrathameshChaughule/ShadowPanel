@@ -11,10 +11,7 @@ import {
   TbBellDown,
   TbChecklist,
   TbError404,
-  TbFilePower,
   TbHelpTriangle,
-  TbLayoutDistributeVertical,
-  TbLayoutNavbarCollapse,
   TbSettingsCog,
   TbTopologyBus,
   TbUserBolt,
@@ -112,18 +109,6 @@ function SidebarContent() {
 
     if (location.pathname.startsWith("/error")) {
       setOpenMenu("error");
-    }
-
-    if (location.pathname.startsWith("/lockScreen")) {
-      setOpenMenu("lockScreen");
-    }
-
-    if (location.pathname.startsWith("/general")) {
-      setOpenMenu("general");
-    }
-
-    if (location.pathname.startsWith("/starter")) {
-      setOpenMenu("starter");
     }
   }, [location.pathname]);
   return (
@@ -664,60 +649,6 @@ function SidebarContent() {
             <span className="flex items-center gap-3">
               <TbError404 />
               <span>Error Pages</span>
-            </span>
-          </NavLink>
-          <NavLink
-            to="/lockScreen"
-            onClick={() => {
-              toggle("lockScreen");
-            }}
-            className={`flex items-center gap-2 mt-2 px-4 p-2 w-full
-              hover:text-blue-600 dark:text-[#8B9CB3] cursor-pointer transition rounded-lg justify-between
-              ${
-                openMenu === "lockScreen"
-                  ? "text-indigo-600 dark:text-[#D8D8DD] dark:bg-[#080B2C] dark:border-indigo-600 font-semibold bg-blue-100 border-l-[3px]"
-                  : "text-gray-600"
-              }`}
-          >
-            <span className="flex items-center gap-3">
-              <TbLayoutNavbarCollapse />
-              <span>Look Screen</span>
-            </span>
-          </NavLink>
-          <NavLink
-            to="/general"
-            onClick={() => {
-              toggle("general");
-            }}
-            className={`flex items-center gap-2 mt-2 px-4 p-2 w-full
-              hover:text-blue-600 dark:text-[#8B9CB3] cursor-pointer transition rounded-lg justify-between
-              ${
-                openMenu === "general"
-                  ? "text-indigo-600 dark:text-[#D8D8DD] dark:bg-[#080B2C] dark:border-indigo-600 font-semibold bg-blue-100 border-l-[3px]"
-                  : "text-gray-600"
-              }`}
-          >
-            <span className="flex items-center gap-3">
-              <TbLayoutDistributeVertical />
-              <span>General Pages</span>
-            </span>
-          </NavLink>
-          <NavLink
-            to="/starter"
-            onClick={() => {
-              toggle("starter");
-            }}
-            className={`flex items-center gap-2 mt-2 px-4 p-2 w-full
-              hover:text-blue-600 dark:text-[#8B9CB3] cursor-pointer transition rounded-lg justify-between
-              ${
-                openMenu === "starter"
-                  ? "text-indigo-600 dark:text-[#D8D8DD] dark:bg-[#080B2C] dark:border-indigo-600 font-semibold bg-blue-100 border-l-[3px]"
-                  : "text-gray-600"
-              }`}
-          >
-            <span className="flex items-center gap-3">
-              <TbFilePower />
-              <span>Starter Page</span>
             </span>
           </NavLink>
         </div>

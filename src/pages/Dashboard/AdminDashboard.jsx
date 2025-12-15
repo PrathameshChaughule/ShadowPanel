@@ -907,7 +907,7 @@ function AdminDashboard() {
             </div>
             <hr className="mx-[-20px] dark:text-[#011743] text-gray-300" />
             <div className="overflow-x-auto w-[90vw] sm:w-[70vw] xl:w-full">
-              <table className="min-w-300 xl:w-full border-collapse border border-[#D1D5DC] dark:border-[#011743] my-5 whitespace-nowrap">
+              <table className="min-w-300 xl:w-full border-collapse whitespace-nowrap border border-[#D1D5DC] dark:border-[#011743] my-5 ">
                 <tr className="bg-gray-300 dark:bg-[#030318] border-b border-[#D1D5DC] dark:border-[#011743]">
                   <th className="text-start px-4 py-3 w-55">Name</th>
                   <th className="text-start w-50">Designation</th>

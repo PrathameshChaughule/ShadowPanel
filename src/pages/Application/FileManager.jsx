@@ -195,238 +195,240 @@ function FileManager() {
                   <span className="font-semibold">View All</span>
                 </div>
               </div>
-              <table className="border border-gray-200 dark:border-[#011743] w-full my-2 align-middle items-center">
-                <tr className="bg-gray-200 dark:bg-[#030318] font-semibold border-b border-gray-200 dark:border-[#011743]">
-                  <th className="text-start p-3 pl-6">Name</th>
-                  <th className="text-start">Size</th>
-                  <th className="text-start">Type</th>
-                  <th className="text-start pl-4">Modified</th>
-                  <th className="text-start">Share</th>
-                  <th> </th>
-                </tr>
-                <tr className="border-b border-gray-200 dark:border-[#011743]">
-                  <td className="flex items-center gap-2 py-4 ml-6">
-                    <img
-                      src="/assets/images/pdf.svg"
-                      className="bg-gray-200 dark:bg-[#0C0C20] p-1 rounded w-8"
-                    />
-                    <span className="font-semibold hover:text-blue-500 cursor-pointer">
-                      Secret
-                    </span>
-                  </td>
-                  <td className="text-[#6D777F]">7.6 MB</td>
-                  <td className="text-[#6D777F]">PDF</td>
-                  <td className="text-[#6D777F] pl-4 py-2">
-                    <span className="font-semibold text-black/70">
-                      Mar 15,2025
-                    </span>
-                    <br />
-                    <span>05:00:14 PM</span>
-                  </td>
-                  <td>
-                    <div className="flex items-center text-3xl">
+              <div className="overflow-x-auto w-[90vw] sm:w-[70vw] xl:w-full">
+                <table className="min-w-300 xl:w-full border-collapse whitespace-nowrap border border-gray-200 dark:border-[#011743] w-full my-2 align-middle items-center">
+                  <tr className="bg-gray-200 dark:bg-[#030318] font-semibold border-b border-gray-200 dark:border-[#011743]">
+                    <th className="text-start p-3 pl-6">Name</th>
+                    <th className="text-start">Size</th>
+                    <th className="text-start">Type</th>
+                    <th className="text-start pl-4">Modified</th>
+                    <th className="text-start">Share</th>
+                    <th> </th>
+                  </tr>
+                  <tr className="border-b border-gray-200 dark:border-[#011743]">
+                    <td className="flex items-center gap-2 py-4 ml-6">
                       <img
-                        src="/assets/images/avatar2.jpg"
-                        className="w-7.5 rounded-full mr-[-9px] z-2 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
-                        alt=""
+                        src="/assets/images/pdf.svg"
+                        className="bg-gray-200 dark:bg-[#0C0C20] p-1 rounded w-8"
                       />
+                      <span className="font-semibold hover:text-blue-500 cursor-pointer">
+                        Secret
+                      </span>
+                    </td>
+                    <td className="text-[#6D777F]">7.6 MB</td>
+                    <td className="text-[#6D777F]">PDF</td>
+                    <td className="text-[#6D777F] pl-4 py-2">
+                      <span className="font-semibold text-black/70">
+                        Mar 15,2025
+                      </span>
+                      <br />
+                      <span>05:00:14 PM</span>
+                    </td>
+                    <td>
+                      <div className="flex items-center text-3xl">
+                        <img
+                          src="/assets/images/avatar2.jpg"
+                          className="w-7.5 rounded-full mr-[-9px] z-2 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
+                          alt=""
+                        />
+                        <img
+                          src="/assets/images/avatar4.jpg"
+                          className="w-7.5 rounded-full mr-[-9px] z-3 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
+                          alt=""
+                        />
+                        <img
+                          src="/assets/images/avatar9.jpg"
+                          className="w-7.5 rounded-full mr-[-9px] z-4 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
+                          alt=""
+                        />
+                        <p className="w-7.5 rounded-full z-4 cursor-pointer hover:z-5 p-[5.5px] text-white bg-blue-600 hover:mb-1.5 text-[15px]">
+                          +2
+                        </p>
+                      </div>
+                    </td>
+                    <td className="flex gap-3 items-center">
+                      <CiStar className="text-2xl cursor-pointer" />
+                      <BsThreeDotsVertical className="text-xl cursor-pointer hover:text-gray-500" />
+                    </td>
+                  </tr>
+                  <tr className="border-b border-gray-200 dark:border-[#011743]">
+                    <td className="flex items-center gap-2 py-4 ml-6">
                       <img
-                        src="/assets/images/avatar4.jpg"
-                        className="w-7.5 rounded-full mr-[-9px] z-3 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
-                        alt=""
+                        src="/assets/images/file.svg"
+                        className="bg-gray-200 dark:bg-[#0C0C20] p-1 rounded w-8"
                       />
+                      <span className="font-semibold hover:text-blue-500 cursor-pointer">
+                        Sophie Headrick
+                      </span>
+                    </td>
+                    <td className="text-[#6D777F]">7.4 MB</td>
+                    <td className="text-[#6D777F]">Doc</td>
+                    <td className="text-[#6D777F] pl-4 py-2">
+                      <span className="font-semibold text-black/70">
+                        Jan 8,2025
+                      </span>
+                      <br />
+                      <span>08:20:13 PM</span>
+                    </td>
+                    <td>
+                      <div className="flex items-center text-3xl">
+                        <img
+                          src="/assets/images/avatar12.jpg"
+                          className="w-7.5 rounded-full mr-[-9px] z-2 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
+                          alt=""
+                        />
+                        <img
+                          src="/assets/images/avatar5.jpg"
+                          className="w-7.5 rounded-full mr-[-9px] z-3 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
+                          alt=""
+                        />
+                      </div>
+                    </td>
+                    <td className="flex gap-3 items-center">
+                      <CiStar className="text-2xl cursor-pointer" />
+                      <BsThreeDotsVertical className="text-xl cursor-pointer hover:text-gray-500" />
+                    </td>
+                  </tr>
+                  <tr className="border-b border-gray-200 dark:border-[#011743]">
+                    <td className="flex items-center gap-2 py-4 ml-6">
                       <img
-                        src="/assets/images/avatar9.jpg"
-                        className="w-7.5 rounded-full mr-[-9px] z-4 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
-                        alt=""
+                        src="/assets/images/image.svg"
+                        className="bg-gray-200 dark:bg-[#0C0C20] p-1 rounded w-8"
                       />
-                      <p className="w-7.5 rounded-full z-4 cursor-pointer hover:z-5 p-[5.5px] text-white bg-blue-600 hover:mb-1.5 text-[15px]">
-                        +2
-                      </p>
-                    </div>
-                  </td>
-                  <td className="flex gap-3 items-center">
-                    <CiStar className="text-2xl cursor-pointer" />
-                    <BsThreeDotsVertical className="text-xl cursor-pointer hover:text-gray-500" />
-                  </td>
-                </tr>
-                <tr className="border-b border-gray-200 dark:border-[#011743]">
-                  <td className="flex items-center gap-2 py-4 ml-6">
-                    <img
-                      src="/assets/images/file.svg"
-                      className="bg-gray-200 dark:bg-[#0C0C20] p-1 rounded w-8"
-                    />
-                    <span className="font-semibold hover:text-blue-500 cursor-pointer">
-                      Sophie Headrick
-                    </span>
-                  </td>
-                  <td className="text-[#6D777F]">7.4 MB</td>
-                  <td className="text-[#6D777F]">Doc</td>
-                  <td className="text-[#6D777F] pl-4 py-2">
-                    <span className="font-semibold text-black/70">
-                      Jan 8,2025
-                    </span>
-                    <br />
-                    <span>08:20:13 PM</span>
-                  </td>
-                  <td>
-                    <div className="flex items-center text-3xl">
+                      <span className="font-semibold hover:text-blue-500 cursor-pointer">
+                        Gallery
+                      </span>
+                    </td>
+                    <td className="text-[#6D777F]">6.1 MB</td>
+                    <td className="text-[#6D777F]">Image</td>
+                    <td className="text-[#6D777F] pl-4 py-2">
+                      <span className="font-semibold text-black/70">
+                        Aug 6,2025
+                      </span>
+                      <br />
+                      <span>04:10:12 PM</span>
+                    </td>
+                    <td>
+                      <div className="flex items-center text-3xl">
+                        <img
+                          src="/assets/images/avatar3.jpg"
+                          className="w-7.5 rounded-full mr-[-9px] z-2 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
+                          alt=""
+                        />
+                        <img
+                          src="/assets/images/avatar14.jpg"
+                          className="w-7.5 rounded-full mr-[-9px] z-3 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
+                          alt=""
+                        />
+                        <img
+                          src="/assets/images/avatar16.jpg"
+                          className="w-7.5 rounded-full mr-[-9px] z-4 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
+                          alt=""
+                        />
+                        <p className="w-7.5 rounded-full z-4 cursor-pointer hover:z-5 p-[5.5px] text-white bg-blue-600 hover:mb-1.5 text-[15px]">
+                          +1
+                        </p>
+                      </div>
+                    </td>
+                    <td className="flex gap-3 items-center">
+                      <CiStar className="text-2xl cursor-pointer" />
+                      <BsThreeDotsVertical className="text-xl cursor-pointer hover:text-gray-500" />
+                    </td>
+                  </tr>
+                  <tr className="border-b border-gray-200 dark:border-[#011743]">
+                    <td className="flex items-center gap-2 py-4 ml-6">
                       <img
-                        src="/assets/images/avatar12.jpg"
-                        className="w-7.5 rounded-full mr-[-9px] z-2 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
-                        alt=""
+                        src="/assets/images/folder.svg"
+                        className="bg-gray-200 dark:bg-[#0C0C20] p-1 rounded w-8"
                       />
+                      <span className="font-semibold hover:text-blue-500 cursor-pointer">
+                        Dorls Crowley
+                      </span>
+                    </td>
+                    <td className="text-[#6D777F]">20 MB</td>
+                    <td className="text-[#6D777F]">Folder</td>
+                    <td className="text-[#6D777F] pl-4 py-2">
+                      <span className="font-semibold text-black/70">
+                        Jan 6,2025
+                      </span>
+                      <br />
+                      <span>03:40:14 PM</span>
+                    </td>
+                    <td>
+                      <div className="flex items-center text-3xl">
+                        <img
+                          src="/assets/images/avatar7.jpg"
+                          className="w-7.5 rounded-full mr-[-9px] z-2 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
+                          alt=""
+                        />
+                        <img
+                          src="/assets/images/avatar10.jpg"
+                          className="w-7.5 rounded-full mr-[-9px] z-3 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
+                          alt=""
+                        />
+                        <img
+                          src="/assets/images/avatar13.jpg"
+                          className="w-7.5 rounded-full mr-[-9px] z-4 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
+                          alt=""
+                        />
+                      </div>
+                    </td>
+                    <td className="flex gap-3 items-center">
+                      <CiStar className="text-2xl cursor-pointer" />
+                      <BsThreeDotsVertical className="text-xl cursor-pointer hover:text-gray-500" />
+                    </td>
+                  </tr>
+                  <tr className="border-b border-gray-200 dark:border-[#011743]">
+                    {" "}
+                    <td className="flex items-center gap-2 py-4 ml-6">
                       <img
-                        src="/assets/images/avatar5.jpg"
-                        className="w-7.5 rounded-full mr-[-9px] z-3 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
-                        alt=""
+                        src="/assets/images/xls.svg"
+                        className="w-8 bg-gray-200 dark:bg-[#0C0C20] p-1 rounded"
                       />
-                    </div>
-                  </td>
-                  <td className="flex gap-3 items-center">
-                    <CiStar className="text-2xl cursor-pointer" />
-                    <BsThreeDotsVertical className="text-xl cursor-pointer hover:text-gray-500" />
-                  </td>
-                </tr>
-                <tr className="border-b border-gray-200 dark:border-[#011743]">
-                  <td className="flex items-center gap-2 py-4 ml-6">
-                    <img
-                      src="/assets/images/image.svg"
-                      className="bg-gray-200 dark:bg-[#0C0C20] p-1 rounded w-8"
-                    />
-                    <span className="font-semibold hover:text-blue-500 cursor-pointer">
-                      Gallery
-                    </span>
-                  </td>
-                  <td className="text-[#6D777F]">6.1 MB</td>
-                  <td className="text-[#6D777F]">Image</td>
-                  <td className="text-[#6D777F] pl-4 py-2">
-                    <span className="font-semibold text-black/70">
-                      Aug 6,2025
-                    </span>
-                    <br />
-                    <span>04:10:12 PM</span>
-                  </td>
-                  <td>
-                    <div className="flex items-center text-3xl">
-                      <img
-                        src="/assets/images/avatar3.jpg"
-                        className="w-7.5 rounded-full mr-[-9px] z-2 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
-                        alt=""
-                      />
-                      <img
-                        src="/assets/images/avatar14.jpg"
-                        className="w-7.5 rounded-full mr-[-9px] z-3 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
-                        alt=""
-                      />
-                      <img
-                        src="/assets/images/avatar16.jpg"
-                        className="w-7.5 rounded-full mr-[-9px] z-4 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
-                        alt=""
-                      />
-                      <p className="w-7.5 rounded-full z-4 cursor-pointer hover:z-5 p-[5.5px] text-white bg-blue-600 hover:mb-1.5 text-[15px]">
-                        +1
-                      </p>
-                    </div>
-                  </td>
-                  <td className="flex gap-3 items-center">
-                    <CiStar className="text-2xl cursor-pointer" />
-                    <BsThreeDotsVertical className="text-xl cursor-pointer hover:text-gray-500" />
-                  </td>
-                </tr>
-                <tr className="border-b border-gray-200 dark:border-[#011743]">
-                  <td className="flex items-center gap-2 py-4 ml-6">
-                    <img
-                      src="/assets/images/folder.svg"
-                      className="bg-gray-200 dark:bg-[#0C0C20] p-1 rounded w-8"
-                    />
-                    <span className="font-semibold hover:text-blue-500 cursor-pointer">
-                      Dorls Crowley
-                    </span>
-                  </td>
-                  <td className="text-[#6D777F]">20 MB</td>
-                  <td className="text-[#6D777F]">Folder</td>
-                  <td className="text-[#6D777F] pl-4 py-2">
-                    <span className="font-semibold text-black/70">
-                      Jan 6,2025
-                    </span>
-                    <br />
-                    <span>03:40:14 PM</span>
-                  </td>
-                  <td>
-                    <div className="flex items-center text-3xl">
-                      <img
-                        src="/assets/images/avatar7.jpg"
-                        className="w-7.5 rounded-full mr-[-9px] z-2 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
-                        alt=""
-                      />
-                      <img
-                        src="/assets/images/avatar10.jpg"
-                        className="w-7.5 rounded-full mr-[-9px] z-3 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
-                        alt=""
-                      />
-                      <img
-                        src="/assets/images/avatar13.jpg"
-                        className="w-7.5 rounded-full mr-[-9px] z-4 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
-                        alt=""
-                      />
-                    </div>
-                  </td>
-                  <td className="flex gap-3 items-center">
-                    <CiStar className="text-2xl cursor-pointer" />
-                    <BsThreeDotsVertical className="text-xl cursor-pointer hover:text-gray-500" />
-                  </td>
-                </tr>
-                <tr className="border-b border-gray-200 dark:border-[#011743]">
-                  {" "}
-                  <td className="flex items-center gap-2 py-4 ml-6">
-                    <img
-                      src="/assets/images/xls.svg"
-                      className="w-8 bg-gray-200 dark:bg-[#0C0C20] p-1 rounded"
-                    />
-                    <span className="font-semibold hover:text-blue-500 cursor-pointer">
-                      Cheat_codez
-                    </span>
-                  </td>
-                  <td className="text-[#6D777F]">8 MB</td>
-                  <td className="text-[#6D777F]">XML</td>
-                  <td className="text-[#6D777F] pl-4 py-2">
-                    <span className="font-semibold text-black/70">
-                      Oct 12,2025
-                    </span>
-                    <br />
-                    <span>02:00:10 PM</span>
-                  </td>
-                  <td>
-                    <div className="flex items-center text-3xl">
-                      <img
-                        src="/assets/images/avatar16.jpg"
-                        className="w-7.5 rounded-full mr-[-9px] z-2 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
-                        alt=""
-                      />
-                      <img
-                        src="/assets/images/avatar15.jpg"
-                        className="w-7.5 rounded-full mr-[-9px] z-3 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
-                        alt=""
-                      />
-                      <img
-                        src="/assets/images/avatar14.jpg"
-                        className="w-7.5 rounded-full mr-[-9px] z-4 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
-                        alt=""
-                      />
-                      <img
-                        src="/assets/images/avatar13.jpg"
-                        className="w-7.5 rounded-full mr-[-9px] z-4 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
-                        alt=""
-                      />
-                    </div>
-                  </td>
-                  <td className="flex gap-3 items-center">
-                    <CiStar className="text-2xl cursor-pointer" />
-                    <BsThreeDotsVertical className="text-xl cursor-pointer hover:text-gray-500" />
-                  </td>
-                </tr>
-              </table>
+                      <span className="font-semibold hover:text-blue-500 cursor-pointer">
+                        Cheat_codez
+                      </span>
+                    </td>
+                    <td className="text-[#6D777F]">8 MB</td>
+                    <td className="text-[#6D777F]">XML</td>
+                    <td className="text-[#6D777F] pl-4 py-2">
+                      <span className="font-semibold text-black/70">
+                        Oct 12,2025
+                      </span>
+                      <br />
+                      <span>02:00:10 PM</span>
+                    </td>
+                    <td>
+                      <div className="flex items-center text-3xl">
+                        <img
+                          src="/assets/images/avatar16.jpg"
+                          className="w-7.5 rounded-full mr-[-9px] z-2 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
+                          alt=""
+                        />
+                        <img
+                          src="/assets/images/avatar15.jpg"
+                          className="w-7.5 rounded-full mr-[-9px] z-3 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
+                          alt=""
+                        />
+                        <img
+                          src="/assets/images/avatar14.jpg"
+                          className="w-7.5 rounded-full mr-[-9px] z-4 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
+                          alt=""
+                        />
+                        <img
+                          src="/assets/images/avatar13.jpg"
+                          className="w-7.5 rounded-full mr-[-9px] z-4 cursor-pointer hover:z-5 p-0.5 dark:bg-[#011743] bg-white hover:mb-1.5"
+                          alt=""
+                        />
+                      </div>
+                    </td>
+                    <td className="flex gap-3 items-center">
+                      <CiStar className="text-2xl cursor-pointer" />
+                      <BsThreeDotsVertical className="text-xl cursor-pointer hover:text-gray-500" />
+                    </td>
+                  </tr>
+                </table>
+              </div>
             </div>
           </div>
         </div>

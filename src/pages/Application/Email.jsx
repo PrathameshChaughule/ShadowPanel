@@ -130,82 +130,86 @@ function Email() {
             </div>
             {/* right */}
             <div className="w-[80%] ">
-              <div className="flex justify-between p-3 border-b dark:border-[#011743] border-[#CED2D4]">
-                <div className="flex items-center gap-2">
-                  <input
-                    type="checkbox"
-                    name=""
-                    className="h-4 w-4 cursor-pointer"
-                    id=""
-                    checked={selected.length === emails.length}
-                    onChange={selectAll}
-                  />
-                  <BsArchive className="p-2.5 text-4xl dark:bg-[#3C4056] dark:hover:bg-[#505572] rounded bg-gray-200 cursor-pointer hover:bg-gray-300" />
-                  <HiOutlineTrash className="p-2.5 text-4xl dark:bg-[#3C4056] dark:hover:bg-[#505572] rounded bg-gray-200 cursor-pointer hover:bg-gray-300" />
-                  <TbMessageReport className="p-2.5 text-4xl rounded dark:bg-[#3C4056] dark:hover:bg-[#505572] bg-gray-200 cursor-pointer hover:bg-gray-300" />
-                  <BsThreeDotsVertical className="p-2.5 text-4xl rounded border border-gray-300 cursor-pointer dark:border-[#011743] dark:hover:bg-[#011743] hover:bg-gray-100" />
-                </div>
-                <div className="border dark:border-[#011743] border-gray-300 rounded">
-                  <input
-                    type="text"
-                    placeholder="Search Keyword"
-                    className="outline-none h-full w-full px-3 border-none"
-                  />
-                </div>
-              </div>
-              {emails.map((items) => (
-                <div
-                  key={items.id}
-                  className="flex justify-between p-3 border-b dark:border-[#011743] border-[#CED2D4]"
-                >
-                  <div className="flex gap-13">
-                    <div className="flex items-center gap-3">
+              <div className="overflow-x-auto w-[90vw] sm:w-[70vw] xl:w-full">
+                <div className="min-w-200 xl:w-full border-collapse whitespace-nowrap">
+                  <div className="flex justify-between p-3 border-b dark:border-[#011743] border-[#CED2D4]">
+                    <div className="flex items-center gap-2">
                       <input
                         type="checkbox"
                         name=""
                         className="h-4 w-4 cursor-pointer"
                         id=""
-                        checked={selected.includes(items.id)}
-                        onChange={() => {
-                          setSelected((prev) =>
-                            prev.includes(items.id)
-                              ? prev.filter((id) => id !== items.id)
-                              : [...prev, items.id]
-                          );
-                        }}
+                        checked={selected.length === emails.length}
+                        onChange={selectAll}
                       />
-                      <CiStar className="text-2xl text-gray-500 cursor-pointer" />
+                      <BsArchive className="p-2.5 text-4xl dark:bg-[#3C4056] dark:hover:bg-[#505572] rounded bg-gray-200 cursor-pointer hover:bg-gray-300" />
+                      <HiOutlineTrash className="p-2.5 text-4xl dark:bg-[#3C4056] dark:hover:bg-[#505572] rounded bg-gray-200 cursor-pointer hover:bg-gray-300" />
+                      <TbMessageReport className="p-2.5 text-4xl rounded dark:bg-[#3C4056] dark:hover:bg-[#505572] bg-gray-200 cursor-pointer hover:bg-gray-300" />
+                      <BsThreeDotsVertical className="p-2.5 text-4xl rounded border border-gray-300 cursor-pointer dark:border-[#011743] dark:hover:bg-[#011743] hover:bg-gray-100" />
                     </div>
-                    <div className="flex items-center w-40 gap-2">
-                      <img
-                        src={items.senderImage}
-                        className="w-9 rounded"
-                        alt=""
+                    <div className="border dark:border-[#011743] border-gray-300 rounded">
+                      <input
+                        type="text"
+                        placeholder="Search Keyword"
+                        className="outline-none h-full w-full px-3 border-none"
                       />
-                      <span>{items.sender}</span>
                     </div>
                   </div>
+                  {emails.map((items) => (
+                    <div
+                      key={items.id}
+                      className="flex justify-between p-3 border-b dark:border-[#011743] border-[#CED2D4]"
+                    >
+                      <div className="flex gap-13">
+                        <div className="flex items-center gap-3">
+                          <input
+                            type="checkbox"
+                            name=""
+                            className="h-4 w-4 cursor-pointer"
+                            id=""
+                            checked={selected.includes(items.id)}
+                            onChange={() => {
+                              setSelected((prev) =>
+                                prev.includes(items.id)
+                                  ? prev.filter((id) => id !== items.id)
+                                  : [...prev, items.id]
+                              );
+                            }}
+                          />
+                          <CiStar className="text-2xl text-gray-500 cursor-pointer" />
+                        </div>
+                        <div className="flex items-center w-40 gap-2">
+                          <img
+                            src={items.senderImage}
+                            className="w-9 rounded"
+                            alt=""
+                          />
+                          <span>{items.sender}</span>
+                        </div>
+                      </div>
 
-                  <div className="flex flex-col w-125">
-                    <div>
-                      <span className="font-semibold">{items.title}</span>
-                      <span
-                        className={`px-2 pb-0.5 rounded text-white ml-2`}
-                        style={{ backgroundColor: `${items.tagColor}` }}
-                      >
-                        {items.tag}
-                      </span>
+                      <div className="flex flex-col w-125">
+                        <div>
+                          <span className="font-semibold">{items.title}</span>
+                          <span
+                            className={`px-2 pb-0.5 rounded text-white ml-2`}
+                            style={{ backgroundColor: `${items.tagColor}` }}
+                          >
+                            {items.tag}
+                          </span>
+                        </div>
+
+                        <span className="text-sm text-gray-500 dark:text-[#c7c8c6]">
+                          {items.message}
+                        </span>
+                      </div>
+                      <div className="flex items-center mr-9">
+                        <span className="font-semibold">{items.time}</span>
+                      </div>
                     </div>
-
-                    <span className="text-sm text-gray-500 dark:text-[#c7c8c6]">
-                      {items.message}
-                    </span>
-                  </div>
-                  <div className="flex items-center mr-9">
-                    <span className="font-semibold">{items.time}</span>
-                  </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </div>
