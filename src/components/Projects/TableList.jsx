@@ -4,7 +4,7 @@ import { project } from "../../data/projectData";
 
 function TableList() {
   return (
-    <div className="overflow-x-auto w-[90vw] sm:w-[70vw] xl:w-full">
+    <div className="overflow-x-auto w-[90vw] md:w-[75vw] xl:w-full">
       <table className="min-w-300 xl:w-full border-collapse whitespace-nowrap border border-[#D1D5DC] dark:border-[#011743] w-full my-2 align-middle items-center">
         <tr className="bg-gray-200 font-semibold dark:bg-[#030318]">
           <th className="text-start px-4 py-3">Project Code</th>

@@ -14,15 +14,17 @@ function Notes() {
       <Navbar>
         <div className="flex flex-col gap-7 sm:p-[24px]">
           <div className="flex text-sm p-2 justify-around sm:justify-between mb-[-15px]">
-            <h4 className="md:text-[1.125rem] font-semibold">Notes</h4>
+            <h4 className="md:text-[1.125rem] font-semibold hidden sm:block">
+              Notes
+            </h4>
             <p>
               Home &gt; Application &gt;{" "}
               <span className="md:text-[1rem] font-medium">Notes</span>
             </p>
           </div>
-          <div className="w-[100%] bg-white border dark:border-[#011743] dark:bg-[#030318] border-[#CED2D4] flex rounded">
+          <div className="w-[100%] bg-white border dark:border-[#011743] dark:bg-[#030318] border-[#CED2D4] flex flex-col lg:flex-row rounded">
             {/* left */}
-            <div className="w-[26%] border-r dark:border-[#011743] border-[#CED2D4] p-4 px-6">
+            <div className="w-full xl:w-[26%] border-r dark:border-[#011743] border-[#CED2D4] p-4 px-6">
               <div className="flex gap-2 hover:bg-blue-700 items-center cursor-pointer justify-center bg-blue-600 text-white p-1.5 rounded font-semibold my-3">
                 <FaRegSquarePlus />
                 <span>Create New</span>
@@ -69,11 +71,11 @@ function Notes() {
               </ul>
             </div>
             {/* right */}
-            <div className="w-[74%] gap-5 p-5 flex flex-wrap justify-between">
+            <div className="w-full lg:w-[74%] gap-5 p-5 flex flex-wrap justify-center">
               {notesData.map((item) => (
                 <div
                   key={item.id}
-                  className="flex flex-col h-fit gap-4 border p-5 w-[31.5%] rounded dark:border-[#011743] border-gray-300"
+                  className="flex flex-col h-50 gap-4 border p-5 w-full lg:w-100 xl:min-w-83 rounded dark:border-[#011743] border-gray-300"
                 >
                   <div className="flex items-center justify-between">
                     <div

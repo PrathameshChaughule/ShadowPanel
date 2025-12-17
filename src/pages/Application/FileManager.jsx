@@ -13,15 +13,15 @@ function FileManager() {
       <Navbar>
         <div className="flex flex-col gap-7 sm:p-[24px]">
           <div className="flex text-sm p-2 justify-around sm:justify-between mb-[-15px]">
-            <h4 className="md:text-[1.125rem] font-semibold">File Manager</h4>
+            <h4 className="md:text-[1.125rem] font-semibold hidden sm:block">File Manager</h4>
             <p>
               Home &gt; Application &gt;{" "}
               <span className="md:text-[1rem] font-medium">File Manager</span>
             </p>
           </div>
-          <div className="w-[100%] bg-white dark:border-[#011743] dark:bg-[#030318] border border-[#CED2D4] flex rounded">
+          <div className="w-[100%] bg-white dark:border-[#011743] dark:bg-[#030318] border border-[#CED2D4] flex flex-col xl:flex-row rounded">
             {/* left */}
-            <div className="w-[26%] border-r dark:border-[#011743] border-[#CED2D4] p-4 px-6">
+            <div className="w-full xl:w-[26%] border-r dark:border-[#011743] border-[#CED2D4] p-4 px-6">
               <div className="flex items-center gap-2">
                 <img
                   src="/assets/images/you.jpg"
@@ -86,10 +86,10 @@ function FileManager() {
               </div>
             </div>
             {/* right */}
-            <div className="w-[74%] p-5">
+            <div className="w-full xl:w-[74%] p-5">
               <span className="font-bold text-xl">Quick Access</span>
-              <div className="mt-3 flex gap-6 justify-around items-center">
-                <div className="w-[32%] cursor-pointer border dark:border-[#011743] border-gray-300 rounded p-5">
+              <div className="mt-3 flex flex-wrap xl:flex-nowrap gap-6 justify-center xl:justify-around items-center">
+                <div className="w-full md:w-[45%] xl:w-[32%] cursor-pointer border dark:border-[#011743] border-gray-300 rounded p-5">
                   <div className="flex items-center justify-between pb-4">
                     <div className="flex items-center gap-2 ">
                       <img src="/assets/images/dropbox.svg" alt="" />
@@ -107,7 +107,7 @@ function FileManager() {
                     <span className="font-semibold">28GB / 300GB</span>
                   </div>
                 </div>
-                <div className="w-[30%] cursor-pointer border dark:border-[#011743] border-gray-300 rounded p-5">
+                <div className="w-full md:w-[45%] xl:w-[30%] cursor-pointer border dark:border-[#011743] border-gray-300 rounded p-5">
                   <div className="flex items-center justify-between pb-4">
                     <div className="flex items-center gap-2 ">
                       <img src="/assets/images/drive.svg" alt="" />
@@ -125,7 +125,7 @@ function FileManager() {
                     <span className="font-semibold">24GB / 65GB</span>
                   </div>
                 </div>
-                <div className="w-[32%] cursor-pointer border dark:border-[#011743] border-gray-300 rounded p-5">
+                <div className="w-full md:w-[45%] xl:w-[32%] cursor-pointer border dark:border-[#011743] border-gray-300 rounded p-5">
                   <div className="flex items-center justify-between pb-4">
                     <div className="flex items-center gap-2 ">
                       <img src="/assets/images/cloud.svg" alt="" />
@@ -146,8 +146,8 @@ function FileManager() {
               </div>
               <hr className="text-gray-300 dark:border-[#011743] mt-6 mb-3" />
               <span className="font-bold text-xl">Recent Files</span>
-              <div className="flex justify-around gap-4 items-center my-3">
-                <div className="w-[23%] cursor-pointer border dark:border-[#011743] border-gray-300 rounded p-5">
+              <div className="flex flex-wrap xl:flex-nowrap justify-around gap-4 items-center my-3">
+                <div className="w-full md:w-[45%] xl:w-[23%] cursor-pointer border dark:border-[#011743] border-gray-300 rounded p-5">
                   <div className="flex justify-between mb-3 items-center">
                     <img src="/assets/images/file.svg" alt="" />
                     <BsThreeDotsVertical className="cursor-pointer hover:text-gray-400" />
@@ -157,7 +157,7 @@ function FileManager() {
                     <span className="text-sm">26 Jul 2025 | 8MB</span>
                   </div>
                 </div>
-                <div className="w-[23%] cursor-pointer border dark:border-[#011743] border-gray-300 rounded p-5">
+                <div className="w-full md:w-[45%] xl:w-[23%] cursor-pointer border dark:border-[#011743] border-gray-300 rounded p-5">
                   <div className="flex justify-between mb-3 items-center">
                     <img src="/assets/images/pdf.svg" alt="" />
                     <BsThreeDotsVertical className="cursor-pointer hover:text-gray-400" />
@@ -167,7 +167,7 @@ function FileManager() {
                     <span className="text-sm">25 Jul 2025 | 6MB</span>
                   </div>
                 </div>
-                <div className="w-[23%] cursor-pointer border dark:border-[#011743] border-gray-300 rounded p-5">
+                <div className="w-full md:w-[45%] xl:w-[23%] cursor-pointer border dark:border-[#011743] border-gray-300 rounded p-5">
                   <div className="flex justify-between mb-3 items-center">
                     <img src="/assets/images/image.svg" alt="" />
                     <BsThreeDotsVertical className="cursor-pointer hover:text-gray-400" />
@@ -177,7 +177,7 @@ function FileManager() {
                     <span className="text-sm">24 Jul 2025 | 6MB</span>
                   </div>
                 </div>
-                <div className="w-[23%] cursor-pointer border dark:border-[#011743] border-gray-300 rounded p-5">
+                <div className="w-full md:w-[45%] xl:w-[23%] cursor-pointer border dark:border-[#011743] border-gray-300 rounded p-5">
                   <div className="flex justify-between mb-3 items-center">
                     <img src="/assets/images/folder.svg" alt="" />
                     <BsThreeDotsVertical className="cursor-pointer hover:text-gray-400" />
@@ -196,7 +196,7 @@ function FileManager() {
                 </div>
               </div>
               <div className="overflow-x-auto w-[90vw] sm:w-[70vw] xl:w-full">
-                <table className="min-w-300 xl:w-full border-collapse whitespace-nowrap border border-gray-200 dark:border-[#011743] w-full my-2 align-middle items-center">
+                <table className="min-w-200 xl:w-full border-collapse whitespace-nowrap border border-gray-200 dark:border-[#011743] w-full my-2 align-middle items-center">
                   <tr className="bg-gray-200 dark:bg-[#030318] font-semibold border-b border-gray-200 dark:border-[#011743]">
                     <th className="text-start p-3 pl-6">Name</th>
                     <th className="text-start">Size</th>

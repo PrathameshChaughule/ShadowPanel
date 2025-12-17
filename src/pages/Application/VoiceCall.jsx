@@ -12,7 +12,9 @@ function VoiceCall() {
       <Navbar>
         <div className="flex flex-col min-h-[80vh] gap-7 sm:p-[24px]">
           <div className="flex text-sm p-2 justify-around sm:justify-between mb-[-15px]">
-            <h4 className="md:text-[1.125rem] font-semibold">Voice Call</h4>
+            <h4 className="md:text-[1.125rem] font-semibold hidden sm:block">
+              Voice Call
+            </h4>
             <p>
               Home &gt; Application &gt;{" "}
               <span className="md:text-[1rem] font-medium">Voice Call</span>

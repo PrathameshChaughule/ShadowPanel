@@ -12,7 +12,7 @@ function Contacts() {
       <Navbar>
         <div className="flex flex-col gap-7 sm:p-[24px]">
           <div className="flex text-sm p-2 justify-around sm:justify-between mb-[-15px]">
-            <h4 className="md:text-[1.125rem] font-semibold">Contacts</h4>
+            <h4 className="md:text-[1.125rem] font-semibold hidden sm:block">Contacts</h4>
             <p>
               Home &gt; Application &gt;{" "}
               <span className="md:text-[1rem] font-medium">Contacts</span>

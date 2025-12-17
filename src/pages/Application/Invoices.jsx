@@ -13,7 +13,9 @@ function Invoices() {
       <Navbar>
         <div className="flex flex-col w-[100vw] sm:w-full gap-7 sm:p-[24px]">
           <div className="flex text-sm p-2 justify-around sm:justify-between mb-[-15px]">
-            <h4 className="md:text-[1.125rem] font-semibold">Invoices</h4>
+            <h4 className="md:text-[1.125rem] font-semibold hidden sm:block">
+              Invoices
+            </h4>
             <p>
               Home &gt; Applications &gt;
               <span className="md:text-[1rem] font-medium"> Invoices</span>
@@ -106,7 +108,7 @@ function Invoices() {
             </div>
           </div>
           <div className="overflow-hidden h-fit w-[99%] p-1 lg:w-full">
-            <div className="overflow-x-auto w-[95vw] sm:w-[70vw] xl:w-full">
+            <div className="overflow-x-auto w-[95vw] md:w-[70vw] xl:w-full">
               <table className="min-w-300 xl:w-full border-collapse border border-[#D1D5DC] dark:border-[#011743] w-full my-2 align-middle items-center">
                 <tr className="bg-gray-200 dark:bg-[#030318] font-semibold">
                   <th className="text-start px-4 py-3">Invoice</th>

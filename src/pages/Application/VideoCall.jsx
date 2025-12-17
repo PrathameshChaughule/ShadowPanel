@@ -24,7 +24,9 @@ function VideoCall() {
       <Navbar>
         <div className="flex min-h-[80vh] flex-col gap-7 md:text-[1rem] sm:p-[24px]">
           <div className="flex text-sm p-2 justify-around sm:justify-between mb-[-15px]">
-            <h4 className="md:text-[1.125rem] font-semibold">Video Call</h4>
+            <h4 className="md:text-[1.125rem] font-semibold hidden sm:block">
+              Video Call
+            </h4>
             <p>
               Home &gt; Application &gt;{" "}
               <span className="md:text-[1rem] font-medium">Video Call</span>

@@ -37,99 +37,107 @@ function Email() {
       <Navbar>
         <div className="flex w-full flex-col gap-7 sm:p-[24px]">
           <div className="flex text-sm p-2 justify-around sm:justify-between mb-[-15px]">
-            <h4 className="md:text-[1.125rem] font-semibold">Email</h4>
+            <h4 className="md:text-[1.125rem] font-semibold hidden sm:block">
+              Email
+            </h4>
             <p>
               Home &gt; Application &gt;{" "}
               <span className="md:text-[1rem] font-medium">Email</span>
             </p>
           </div>
-          <div className="w-[100%] bg-white border border-[#CED2D4] dark:bg-[#030318] dark:border-[#011743] flex rounded">
+          <div className="w-[100%] flex-col xl:flex-row bg-white border border-[#CED2D4] dark:bg-[#030318] dark:border-[#011743] flex rounded">
             {/* left */}
-            <div className="w-[24%] border-r border-[#CED2D4] dark:border-[#011743] p-4 px-6">
+            <div className="w-full xl:w-[24%] border-r border-[#CED2D4] dark:border-[#011743] p-4 px-6">
               <div className="flex gap-2 hover:bg-blue-700 items-center cursor-pointer justify-center bg-blue-600 text-white p-1.5 rounded font-semibold my-3">
                 <FaRegSquarePlus />
                 <span>Compose New</span>
               </div>
               <ul>
-                <li className="flex mb-1 justify-between items-center gap-2 p-2 cursor-pointer dark:bg-[#0C0C20] bg-blue-100 rounded text-blue-600 font-semibold">
-                  <div className="flex items-center gap-2">
-                    <HiOutlineInbox />
-                    Inbox
-                  </div>
-
-                  <div className="bg-red-600 px-2 rounded-full">
-                    <span className="text-white">6</span>
-                  </div>
-                </li>
-                <li className="flex items-center gap-2 p-2 hover:bg-blue-100 dark:hover:bg-[#0C0C20] cursor-pointer rounded hover:text-blue-600 font-semibold">
-                  <FaRegStar />
-                  Starred
-                </li>
-                <li className="flex items-center gap-2 p-2 hover:bg-blue-100 dark:hover:bg-[#0C0C20] cursor-pointer rounded hover:text-blue-600 font-semibold">
-                  <FiClock />
-                  Snoozed
-                </li>
-                <li className="flex items-center gap-2 p-2 hover:bg-blue-100 dark:hover:bg-[#0C0C20] cursor-pointer rounded hover:text-blue-600 font-semibold">
-                  <BsSend />
-                  Sent
-                </li>
-                <li className="flex items-center gap-2 p-2 hover:bg-blue-100 dark:hover:bg-[#0C0C20] cursor-pointer rounded hover:text-blue-600 font-semibold">
-                  <TbFilePower />
-                  Drafts
-                </li>
-                <li className="flex items-center gap-2 p-2 hover:bg-blue-100 dark:hover:bg-[#0C0C20] cursor-pointer rounded hover:text-blue-600 font-semibold">
-                  <TbBadge />
-                  Important
-                </li>
-                <li className="flex items-center gap-2 p-2 hover:bg-blue-100 dark:hover:bg-[#0C0C20] cursor-pointer rounded hover:text-blue-600 font-semibold">
-                  <TbBrandHipchat />
-                  Chats
-                </li>
-                <li className="flex items-center gap-2 p-2 hover:bg-blue-100  dark:hover:bg-[#0C0C20] cursor-pointer rounded hover:text-blue-600 font-semibold">
-                  <TbClockRecord />
-                  Scheduled
-                </li>
+                <div className="flex flex-wrap flex-row xl:flex-col justify-center gap-2">
+                  <li className="flex mb-1 justify-between border xl:border-none border-[#CED2D4] dark:border-[#011743] items-center gap-2 p-2 cursor-pointer dark:bg-[#0C0C20] bg-blue-100 rounded text-blue-600 font-semibold">
+                    <div className="flex items-center gap-2">
+                      <HiOutlineInbox />
+                      Inbox
+                    </div>
+                    <div className="bg-red-600 px-2 rounded-full">
+                      <span className="text-white">6</span>
+                    </div>
+                  </li>
+                  <li className="flex items-center border xl:border-none border-[#CED2D4] dark:border-[#011743] gap-2 p-2 hover:bg-blue-100 dark:hover:bg-[#0C0C20] cursor-pointer rounded hover:text-blue-600 font-semibold">
+                    <FaRegStar />
+                    Starred
+                  </li>
+                  <li className="flex items-center gap-2 p-2 border xl:border-none border-[#CED2D4] dark:border-[#011743] hover:bg-blue-100 dark:hover:bg-[#0C0C20] cursor-pointer rounded hover:text-blue-600 font-semibold">
+                    <FiClock />
+                    Snoozed
+                  </li>
+                  <li className="flex items-center gap-2 p-2 border xl:border-none border-[#CED2D4] dark:border-[#011743] hover:bg-blue-100 dark:hover:bg-[#0C0C20] cursor-pointer rounded hover:text-blue-600 font-semibold">
+                    <BsSend />
+                    Sent
+                  </li>
+                  <li className="flex items-center gap-2 p-2 border xl:border-none border-[#CED2D4] dark:border-[#011743] hover:bg-blue-100 dark:hover:bg-[#0C0C20] cursor-pointer rounded hover:text-blue-600 font-semibold">
+                    <TbFilePower />
+                    Drafts
+                  </li>
+                  <li className="flex items-center gap-2 p-2 border xl:border-none border-[#CED2D4] dark:border-[#011743] hover:bg-blue-100 dark:hover:bg-[#0C0C20] cursor-pointer rounded hover:text-blue-600 font-semibold">
+                    <TbBadge />
+                    Important
+                  </li>
+                  <li className="flex items-center gap-2 p-2 border xl:border-none border-[#CED2D4] dark:border-[#011743] hover:bg-blue-100 dark:hover:bg-[#0C0C20] cursor-pointer rounded hover:text-blue-600 font-semibold">
+                    <TbBrandHipchat />
+                    Chats
+                  </li>
+                  <li className="flex items-center gap-2 p-2 border xl:border-none border-[#CED2D4] dark:border-[#011743] hover:bg-blue-100  dark:hover:bg-[#0C0C20] cursor-pointer rounded hover:text-blue-600 font-semibold">
+                    <TbClockRecord />
+                    Scheduled
+                  </li>
+                </div>
 
                 <hr className="my-5 text-gray-300 dark:border-[#011743]" />
                 <span className="text-gray-500 dark:text-[#DBDCDA]">
                   Others
                 </span>
-                <li className="flex items-center gap-2 p-2 hover:bg-blue-100 dark:hover:bg-[#0C0C20] cursor-pointer rounded hover:text-blue-600 font-semibold">
-                  <LuMessagesSquare />
-                  All Emails
-                </li>
-                <li className="flex items-center gap-2 p-2 hover:bg-blue-100 dark:hover:bg-[#0C0C20] cursor-pointer rounded hover:text-blue-600 font-semibold">
-                  <BsBoxSeam />
-                  Spam
-                </li>
-                <li className="flex items-center gap-2 p-2 hover:bg-blue-100 dark:hover:bg-[#0C0C20] cursor-pointer rounded hover:text-blue-600 font-semibold">
-                  <HiOutlineTrash />
-                  Trash
-                </li>
+                <div className="flex flex-wrap flex-row xl:flex-col justify-center gap-2">
+                  <li className="flex items-center gap-2 p-2 border xl:border-none border-[#CED2D4] dark:border-[#011743]  hover:bg-blue-100 dark:hover:bg-[#0C0C20] cursor-pointer rounded hover:text-blue-600 font-semibold">
+                    <LuMessagesSquare />
+                    All Emails
+                  </li>
+                  <li className="flex items-center gap-2 p-2 border xl:border-none border-[#CED2D4] dark:border-[#011743]  hover:bg-blue-100 dark:hover:bg-[#0C0C20] cursor-pointer rounded hover:text-blue-600 font-semibold">
+                    <BsBoxSeam />
+                    Spam
+                  </li>
+                  <li className="flex items-center gap-2 p-2 border xl:border-none border-[#CED2D4] dark:border-[#011743] hover:bg-blue-100 dark:hover:bg-[#0C0C20] cursor-pointer rounded hover:text-blue-600 font-semibold">
+                    <HiOutlineTrash />
+                    Trash
+                  </li>
+                </div>
+
                 <hr className="my-5 text-gray-300 dark:border-[#011743]" />
                 <span className="text-gray-500 dark:text-[#DBDCDA]">
                   Labels
                 </span>
-                <li className="flex items-center w-fit mt-2 mb-2 gap-1 hover:text-blue-500 cursor-pointer font-semibold">
-                  <GoDotFill className="text-green-500" />
-                  Personal
-                </li>
-                <li className="flex items-center w-fit gap-1 mb-2 hover:text-blue-500 cursor-pointer font-semibold">
-                  <GoDotFill className="text-yellow-500" />
-                  Client
-                </li>
-                <li className="flex items-center w-fit gap-1 mb-2 hover:text-blue-500 cursor-pointer font-semibold">
-                  <GoDotFill className="text-blue-500" />
-                  Marketing
-                </li>
-                <li className="flex items-center w-fit gap-1 hover:text-blue-500 cursor-pointer font-semibold">
-                  <GoDotFill className="text-red-500" />
-                  Office
-                </li>
+                <div className="flex flex-wrap flex-row xl:flex-col items-center justify-center gap-2">
+                  <li className="flex items-center px-2 h-8 w-fit xl:mt-2 xl:mb-2 border xl:border-none border-[#CED2D4] dark:border-[#011743] gap-1 hover:text-blue-500 cursor-pointer font-semibold">
+                    <GoDotFill className="text-green-500" />
+                    Personal
+                  </li>
+                  <li className="flex items-center px-2 h-8 w-fit gap-1 xl:mb-2 border xl:border-none border-[#CED2D4] dark:border-[#011743] hover:text-blue-500 cursor-pointer font-semibold">
+                    <GoDotFill className="text-yellow-500" />
+                    Client
+                  </li>
+                  <li className="flex items-center px-2 h-8 w-fit gap-1 xl:mb-2 border xl:border-none border-[#CED2D4] dark:border-[#011743] hover:text-blue-500 cursor-pointer font-semibold">
+                    <GoDotFill className="text-blue-500" />
+                    Marketing
+                  </li>
+                  <li className="flex items-center px-2 h-8 w-fit gap-1 border xl:border-none border-[#CED2D4] dark:border-[#011743] hover:text-blue-500 cursor-pointer font-semibold">
+                    <GoDotFill className="text-red-500" />
+                    Office
+                  </li>
+                </div>
               </ul>
             </div>
             {/* right */}
-            <div className="w-[80%] ">
+            <div className="w-[80%]">
               <div className="overflow-x-auto w-[90vw] sm:w-[70vw] xl:w-full">
                 <div className="min-w-200 xl:w-full border-collapse whitespace-nowrap">
                   <div className="flex justify-between p-3 border-b dark:border-[#011743] border-[#CED2D4]">

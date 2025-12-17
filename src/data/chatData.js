@@ -7,7 +7,7 @@ export const contacts = [
   {
     id: 1,
     name: "James Higham",
-    msg: "Got it. Preparing the...",
+    msg: "Got it. Preparing...",
     img: "/assets/images/avatar1.jpg",
     color: "#05DF72",
     status: "Online",

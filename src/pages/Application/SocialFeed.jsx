@@ -40,23 +40,27 @@ function SocialFeed() {
       <Navbar>
         <div className="flex flex-col gap-7 sm:p-[24px]">
           <div className="flex text-sm p-2 justify-around sm:justify-between mb-[-15px]">
-            <h4 className="md:text-[1.125rem] font-semibold">Social Feed</h4>
+            <h4 className="md:text-[1.125rem] font-semibold hidden sm:block">
+              Social Feed
+            </h4>
             <p>
               Home &gt; Application &gt;{" "}
               <span className="md:text-[1rem] font-medium">Social Feed</span>
             </p>
           </div>
-          <div className="w-[100%] bg-white border border-[#CED2D4] dark:border-[#011743] dark:bg-[#030318] p-4 flex justify-between rounded h-screen overflow-hidden">
+          <div className="w-[100%] flex-col gap-3 2xl:gap-0 2xl:flex-row bg-white border border-[#CED2D4] dark:border-[#011743] dark:bg-[#030318] p-4 flex justify-between rounded 2xl:h-screen overflow-auto 2xl:overflow-hidden">
             {/* left */}
-            <div className="w-[23%] overflow-auto sticky top-0 h-screen p-1 pb-10">
+            <div className="w-full 2xl:w-[23%] 2xl:overflow-auto 2xl:sticky top-0 2xl:h-screen p-1 pb-10 border 2xl:border-0 border-[#CED2D4] dark:border-[#011743]">
               <div className="flex flex-col border border-[#CED2D4] dark:border-[#011743] relative p-5 rounded items-center gap-2">
-                <img
-                  src="/assets/images/you.jpg"
-                  className="w-10 cursor-pointer h-10 rounded-full"
-                  alt=""
-                />
-                <div className="h-3 w-3 p-0.5 cursor-pointer dark:bg-[#030318] bg-white rounded-full top-12 right-29 absolute">
-                  <div className="bg-green-400 rounded-full h-full w-full"></div>
+                <div className="relative">
+                  <img
+                    src="/assets/images/you.jpg"
+                    className="w-10 cursor-pointer h-10 rounded-full"
+                    alt=""
+                  />
+                  <div className="h-3 w-3 p-0.5 cursor-pointer dark:bg-[#030318] bg-white rounded-full bottom-0 right-0 absolute">
+                    <div className="bg-green-400 rounded-full h-full w-full"></div>
+                  </div>
                 </div>
                 <div className="flex items-center flex-col">
                   <span className="text-xl hover:text-blue-600 cursor-pointer font-bold mt-[-4px]">
@@ -74,94 +78,98 @@ function SocialFeed() {
                 <span>Create Post</span>
               </div>
               <ul>
-                <li className="flex mb-2 items-center gap-2 p-2 bg-blue-100 rounded dark:bg-[#0C0C20] text-blue-600 cursor-pointer font-semibold">
-                  <TbBrandFeedly />
-                  All Feeds
-                </li>
-                <li className="flex items-center gap-2 p-2 hover:bg-blue-100 rounded hover:dark:bg-[#0C0C20] hover:text-blue-600 cursor-pointer font-semibold">
-                  <TbMoodSearch />
-                  Explore
-                </li>
-                <li className="flex items-center gap-2 p-2 hover:bg-blue-100 rounded hover:dark:bg-[#0C0C20] hover:text-blue-600 cursor-pointer font-semibold">
-                  <LuMailCheck />
-                  Messages
-                </li>
-                <li className="flex items-center gap-2 p-2 hover:bg-blue-100 rounded hover:dark:bg-[#0C0C20] hover:text-blue-600 cursor-pointer font-semibold">
-                  <IoListSharp />
-                  Lists
-                </li>
-                <li className="flex items-center gap-2 p-2 hover:bg-blue-100 rounded hover:dark:bg-[#0C0C20] hover:text-blue-600 cursor-pointer font-semibold">
-                  <CiBookmark />
-                  Bookmark
-                </li>
-                <li className="flex items-center gap-2 p-2 hover:bg-blue-100 rounded hover:dark:bg-[#0C0C20] hover:text-blue-600 cursor-pointer font-semibold">
-                  <TbCoffee />
-                  Marketplace
-                </li>
-                <li className="flex items-center gap-2 p-2 hover:bg-blue-100 rounded hover:dark:bg-[#0C0C20] hover:text-blue-600 cursor-pointer font-semibold">
-                  <FiFileText />
-                  Files
-                </li>
-                <li className="flex items-center gap-2 p-2 hover:bg-blue-100 rounded hover:dark:bg-[#0C0C20] hover:text-blue-600 cursor-pointer font-semibold">
-                  <RiMusic2Line />
-                  Media
-                </li>
-                <li className="flex  items-center gap-2 p-2 hover:bg-blue-100 rounded hover:dark:bg-[#0C0C20] hover:text-blue-600 cursor-pointer font-semibold">
-                  <TbUserShare />
-                  Profile
-                </li>
+                <div className="flex flex-row 2xl:flex-col flex-wrap justify-evenly 2xl:justify-start w-full">
+                  <li className="flex mb-2 items-center gap-2 p-2 bg-blue-100 rounded dark:bg-[#0C0C20] text-blue-600 cursor-pointer font-semibold">
+                    <TbBrandFeedly />
+                    All Feeds
+                  </li>
+                  <li className="flex items-center gap-2 p-2 hover:bg-blue-100 rounded hover:dark:bg-[#0C0C20] hover:text-blue-600 cursor-pointer font-semibold">
+                    <TbMoodSearch />
+                    Explore
+                  </li>
+                  <li className="flex items-center gap-2 p-2 hover:bg-blue-100 rounded hover:dark:bg-[#0C0C20] hover:text-blue-600 cursor-pointer font-semibold">
+                    <LuMailCheck />
+                    Messages
+                  </li>
+                  <li className="flex items-center gap-2 p-2 hover:bg-blue-100 rounded hover:dark:bg-[#0C0C20] hover:text-blue-600 cursor-pointer font-semibold">
+                    <IoListSharp />
+                    Lists
+                  </li>
+                  <li className="flex items-center gap-2 p-2 hover:bg-blue-100 rounded hover:dark:bg-[#0C0C20] hover:text-blue-600 cursor-pointer font-semibold">
+                    <CiBookmark />
+                    Bookmark
+                  </li>
+                  <li className="flex items-center gap-2 p-2 hover:bg-blue-100 rounded hover:dark:bg-[#0C0C20] hover:text-blue-600 cursor-pointer font-semibold">
+                    <TbCoffee />
+                    Marketplace
+                  </li>
+                  <li className="flex items-center gap-2 p-2 hover:bg-blue-100 rounded hover:dark:bg-[#0C0C20] hover:text-blue-600 cursor-pointer font-semibold">
+                    <FiFileText />
+                    Files
+                  </li>
+                  <li className="flex items-center gap-2 p-2 hover:bg-blue-100 rounded hover:dark:bg-[#0C0C20] hover:text-blue-600 cursor-pointer font-semibold">
+                    <RiMusic2Line />
+                    Media
+                  </li>
+                  <li className="flex  items-center gap-2 p-2 hover:bg-blue-100 rounded hover:dark:bg-[#0C0C20] hover:text-blue-600 cursor-pointer font-semibold">
+                    <TbUserShare />
+                    Profile
+                  </li>
+                </div>
                 <hr className="text-gray-300 my-3 dark:border-[#011743]" />
                 <span className="font-semibold text-lg">Pages You Liked</span>
-                <li className="flex items-center justify-between mt-1.5">
-                  <div className="flex items-center gap-2">
-                    <img
-                      src="/assets/images/dribble.svg"
-                      className="cursor-pointer"
-                      alt=""
-                    />
-                    <span className="font-semibold cursor-pointer hover:text-blue-600">
-                      Dribble
-                    </span>
-                  </div>
-                  <AiOutlineDislike className="p-2 cursor-pointer dark:bg-[#3C4056] dark:hover:bg-[#505572] hover:bg-gray-200 bg-gray-200/50 text-4xl rounded" />
-                </li>
-                <li className="flex items-center justify-between mt-2">
-                  <div className="flex items-center gap-2">
-                    <img
-                      src="/assets/images/uiux.svg"
-                      className="cursor-pointer"
-                      alt=""
-                    />
-                    <span className="font-semibold cursor-pointer hover:text-blue-600">
-                      UI/UX Designs
-                    </span>
-                  </div>
-                  <AiOutlineDislike className="p-2 cursor-pointer dark:bg-[#3C4056] dark:hover:bg-[#505572] hover:bg-gray-200 bg-gray-200/50 text-4xl rounded" />
-                </li>
-                <li className="flex items-center justify-between mt-2">
-                  <div className="flex items-center gap-2">
-                    <img
-                      src="/assets/images/figmaupdate.svg"
-                      className="cursor-pointer"
-                      alt=""
-                    />
-                    <span className="font-semibold cursor-pointer hover:text-blue-600">
-                      Dribble
-                    </span>
-                  </div>
-                  <AiOutlineDislike className="p-2 cursor-pointer dark:bg-[#3C4056] dark:hover:bg-[#505572] hover:bg-gray-200 bg-gray-200/50 text-4xl rounded" />
-                </li>
+                <div className="flex flex-row 2xl:flex-col flex-wrap justify-evenly 2xl:justify-start w-full">
+                  <li className="flex items-center justify-between w-50 mt-1.5">
+                    <div className="flex items-center gap-2">
+                      <img
+                        src="/assets/images/dribble.svg"
+                        className="cursor-pointer"
+                        alt=""
+                      />
+                      <span className="font-semibold cursor-pointer hover:text-blue-600">
+                        Dribble
+                      </span>
+                    </div>
+                    <AiOutlineDislike className="p-2 cursor-pointer dark:bg-[#3C4056] dark:hover:bg-[#505572] hover:bg-gray-200 bg-gray-200/50 text-4xl rounded" />
+                  </li>
+                  <li className="flex items-center justify-between w-50 mt-2">
+                    <div className="flex items-center gap-2">
+                      <img
+                        src="/assets/images/uiux.svg"
+                        className="cursor-pointer"
+                        alt=""
+                      />
+                      <span className="font-semibold cursor-pointer hover:text-blue-600">
+                        UI/UX Designs
+                      </span>
+                    </div>
+                    <AiOutlineDislike className="p-2 cursor-pointer dark:bg-[#3C4056] dark:hover:bg-[#505572] hover:bg-gray-200 bg-gray-200/50 text-4xl rounded" />
+                  </li>
+                  <li className="flex items-center justify-between w-50 mt-2">
+                    <div className="flex items-center gap-2">
+                      <img
+                        src="/assets/images/figmaupdate.svg"
+                        className="cursor-pointer"
+                        alt=""
+                      />
+                      <span className="font-semibold cursor-pointer hover:text-blue-600">
+                        Dribble
+                      </span>
+                    </div>
+                    <AiOutlineDislike className="p-2 cursor-pointer dark:bg-[#3C4056] dark:hover:bg-[#505572] hover:bg-gray-200 bg-gray-200/50 text-4xl rounded" />
+                  </li>
+                </div>
               </ul>
             </div>
             {/* mid */}
-            <div className=" flex flex-col gap-6 w-[52%] overflow-auto h-screen p-2 pb-10">
+            <div className="flex flex-col gap-6 w-full 2xl:w-[52%] 2xl:overflow-auto 2xl:h-screen p-2 pb-10 border 2xl:border-0 border-[#CED2D4] dark:border-[#011743]">
               <div className="flex flex-col p-4 rounded border border-[#CED2D4] dark:border-[#011743]">
                 <span className="text-lg font-bold mb-1">Create Post</span>
                 <textarea
                   placeholder="What's on your mind?"
-                  className="p-3 border-none outline-none border border-[#CED2D4] dark:border-[#011743] h-22 rounded"
+                  className="p-3 outline-none border border-[#CED2D4] dark:border-[#011743] h-22 rounded"
                 ></textarea>
-                <div className="flex items-center justify-between mt-4">
+                <div className="flex flex-col gap-3 md:flex-row items-center justify-between mt-4">
                   <div className="flex items-center gap-2">
                     <RxImage className="p-2 text-4xl dark:bg-[#3C4056] dark:hover:bg-[#505572] bg-gray-200/80 rounded cursor-pointer hover:bg-gray-300/79" />
                     <AiOutlineLink className="p-2 text-4xl dark:bg-[#3C4056] dark:hover:bg-[#505572] bg-gray-200/80 rounded cursor-pointer hover:bg-gray-300/79" />
@@ -183,7 +191,7 @@ function SocialFeed() {
               </div>
               <div className="flex flex-col p-4 rounded border border-[#CED2D4] dark:border-[#011743]">
                 <span className="font-semibold text-lg">Popular Channels</span>
-                <div className="flex items-center justify-evenly mt-3">
+                <div className="flex flex-wrap gap-2 items-center justify-evenly mt-3">
                   <img src="/assets/images/channel-01.svg" alt="" />
                   <img src="/assets/images/channel-02.svg" alt="" />
                   <img src="/assets/images/channel-03.svg" alt="" />
@@ -195,7 +203,7 @@ function SocialFeed() {
                 </div>
               </div>
               <div className="flex flex-col p-4 px-5 rounded border border-[#CED2D4] dark:border-[#011743]">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-wrap items-center justify-center sm:justify-between">
                   <div className="flex items-center gap-2">
                     <img
                       src="/assets/images/avatar1.jpg"
@@ -207,14 +215,16 @@ function SocialFeed() {
                         Richard Smith{" "}
                         <BsFillPatchCheckFill className="text-green-500 text-xl" />
                       </span>
-                      <span className="flex items-center text-md gap-2 text-sky-500">
+                      <span className="flex items-center flex-col sm:flex-row text-md sm:gap-2 text-sky-500">
                         @richard442
-                        <GoDotFill className="text-gray-400 text-sm" />
-                        <span className="text-gray-400">United Kingdom</span>
+                        <span className="flex items-center gap-2 text-gray-400">
+                          <GoDotFill className="text-gray-400 hidden sm:block text-sm" />
+                          United Kingdom
+                        </span>
                       </span>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex w-full justify-between sm:w-fit items-center gap-2">
                     <span className="text-gray-500">About 1 hr ago</span>
                     <BsThreeDotsVertical className="p-2 text-4xl border border-[#CED2D4] dark:border-[#011743] dark:hover:bg-[#011743] rounded cursor-pointer hover:bg-gray-100" />
                   </div>
@@ -240,7 +250,7 @@ function SocialFeed() {
                     />
                   </div>
                 </div>
-                <div className="flex items-center justify-around gap-1.5">
+                <div className="flex items-center flex-wrap md:flex-nowrap overflow-hidden justify-around gap-1.5">
                   <img
                     src="/assets/images/post11.jpg"
                     className="w-33.5 rounded cursor-pointer"
@@ -258,8 +268,8 @@ function SocialFeed() {
                     className="w-33.5 rounded cursor-pointer"
                   />
                 </div>
-                <div className="py-2 flex justify-between items-center">
-                  <div className="flex items-center gap-3">
+                <div className="py-2 flex flex-wrap justify-center md:justify-between items-center">
+                  <div className="flex items-center flex-wrap sm:flex-nowrap justify-center gap-2 sm:gap-3">
                     <div className="flex items-center gap-1.5">
                       <IoMdHeartEmpty />
                       <span className=" cursor-pointer hover:text-blue-500">
@@ -303,7 +313,7 @@ function SocialFeed() {
                 </div>
               </div>
               <div className="flex flex-col p-4 px-5 rounded border border-[#CED2D4] dark:border-[#011743]">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-wrap items-center justify-center sm:justify-between">
                   <div className="flex items-center gap-2">
                     <img
                       src="/assets/images/avatar2.jpg"
@@ -315,14 +325,17 @@ function SocialFeed() {
                         Jason Heier{" "}
                         <BsFillPatchCheckFill className="text-green-500 text-xl" />
                       </span>
-                      <span className="flex items-center text-md gap-2 text-sky-500">
+                      <span className="flex items-center flex-col sm:flex-row text-md gap-2 text-sky-500">
                         @jason118
-                        <GoDotFill className="text-gray-400 text-sm" />
-                        <span className="text-gray-400">United Kingdom</span>
+                        <span className="flex items-center gap-2 text-gray-400">
+                          {" "}
+                          <GoDotFill className="text-gray-400 hidden sm:block text-sm" />
+                          United Kingdom
+                        </span>
                       </span>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex w-full justify-between sm:w-fit items-center gap-2">
                     <span className="text-gray-500">About 1 hr ago</span>
                     <BsThreeDotsVertical className="p-2 text-4xl border border-[#CED2D4] dark:border-[#011743] dark:hover:bg-[#011743] rounded cursor-pointer hover:bg-gray-100" />
                   </div>
@@ -358,8 +371,8 @@ function SocialFeed() {
                     </span>
                   </div>
                 </div>
-                <div className="py-2 flex justify-between items-center">
-                  <div className="flex items-center gap-3">
+                <div className="py-2 flex flex-wrap justify-center md:justify-between items-center">
+                  <div className="flex items-center flex-wrap sm:flex-nowrap justify-center gap-2 sm:gap-3">
                     <div className="flex items-center gap-1.5">
                       <IoMdHeartEmpty />
                       <span className=" cursor-pointer hover:text-blue-500">
@@ -403,7 +416,7 @@ function SocialFeed() {
                 </div>
               </div>
               <div className="flex flex-col p-4 px-5 rounded border border-[#CED2D4] dark:border-[#011743]">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col sm:flex-row items-center justify-between">
                   <div className="flex items-center gap-2">
                     <img
                       src="/assets/images/avatar4.jpg"
@@ -415,14 +428,16 @@ function SocialFeed() {
                         Sophie Headrick{" "}
                         <BsFillPatchCheckFill className="text-green-500 text-xl" />
                       </span>
-                      <span className="flex items-center text-md gap-2 text-sky-500">
+                      <span className="flex items-center flex-col sm:flex-row text-md gap-2 text-sky-500">
                         @sophie241
-                        <GoDotFill className="text-gray-400 text-sm" />
-                        <span className="text-gray-400">United Kingdom</span>
+                        <span className="flex items-center gap-2 text-gray-400">
+                          <GoDotFill className="text-gray-400 hidden sm:block text-sm" />
+                          United Kingdom
+                        </span>
                       </span>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 w-full justify-between sm:w-fit">
                     <span className="text-gray-500">About 1 hr ago</span>
                     <BsThreeDotsVertical className="p-2 text-4xl border border-[#CED2D4] dark:border-[#011743] dark:hover:bg-[#011743] rounded cursor-pointer hover:bg-gray-100" />
                   </div>
@@ -458,8 +473,8 @@ function SocialFeed() {
                     </span>
                   </div>
                 </div>
-                <div className="py-2 flex justify-between mb-2 items-center">
-                  <div className="flex items-center gap-3">
+                <div className="py-2 flex flex-wrap justify-center md:justify-between items-center">
+                  <div className="flex items-center flex-wrap sm:flex-nowrap justify-center gap-2 sm:gap-3">
                     <div className="flex items-center gap-1.5">
                       <IoMdHeartEmpty />
                       <span className=" cursor-pointer hover:text-blue-500">
@@ -567,7 +582,7 @@ function SocialFeed() {
               </div>
             </div>
             {/* right */}
-            <div className=" w-[22%] flex flex-col gap-6 overflow-auto sticky top-0 h-screen p-1 pb-10">
+            <div className=" w-full 2xl:w-[22%] flex flex-col gap-6 2xl:overflow-auto 2xl:sticky top-0 h-screen p-1 pb-10 border 2xl:border-0 border-[#CED2D4] dark:border-[#011743]">
               <div className="rounded border border-[#CED2D4] dark:border-[#011743] p-4">
                 <span className="font-bold text-xl">Peoples</span>
                 <div className="flex items-center justify-between mt-1">
@@ -738,7 +753,7 @@ function SocialFeed() {
                   #HealthTips #Wellness #Motivation #Inspiration
                 </span>
               </div>
-              <div className="rounded border border-[#CED2D4] dark:border-[#011743] p-4 py-5 flex flex-col gap-2">
+              <div className="rounded border border-[#CED2D4] dark:border-[#011743] p-4 py-5 flex flex-col items-center gap-2">
                 <div className="h-fit w-fit rounded overflow-hidden ">
                   <img
                     src="/assets/images/social-feed-04.jpg"

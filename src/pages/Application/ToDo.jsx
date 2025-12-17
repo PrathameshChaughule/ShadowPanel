@@ -14,15 +14,17 @@ function ToDo() {
       <Navbar>
         <div className="flex flex-col gap-7 sm:p-[24px]">
           <div className="flex text-sm p-2 justify-around sm:justify-between mb-[-15px]">
-            <h4 className="md:text-[1.125rem] font-semibold">Todo</h4>
+            <h4 className="md:text-[1.125rem] font-semibold hidden sm:block">
+              Todo
+            </h4>
             <p>
               Home &gt; Application &gt;{" "}
               <span className="md:text-[1rem] font-medium">Todo</span>
             </p>
           </div>
-          <div className="w-[100%] bg-white dark:border-[#011743] dark:bg-[#030318] border border-[#CED2D4] flex rounded">
+          <div className="w-[100%] bg-white dark:border-[#011743] dark:bg-[#030318] border border-[#CED2D4] flex flex-col xl:flex-row rounded">
             {/* left */}
-            <div className="w-[20%] border-r dark:border-[#011743] border-[#CED2D4] p-4 px-6">
+            <div className="w-full xl:w-[20%] border-r dark:border-[#011743] border-[#CED2D4] p-3 md:p-4 md:px-6">
               <div className="flex gap-2 hover:bg-blue-700 items-center cursor-pointer justify-center bg-blue-600 text-white p-1.5 rounded font-semibold my-3">
                 <FaRegSquarePlus />
                 <span>Create New</span>
@@ -81,8 +83,8 @@ function ToDo() {
               </ul>
             </div>
             {/* right */}
-            <div className="w-[80%] p-7">
-              <div className="border dark:border-[#011743] dark:bg-[#030318] rounded">
+            <div className="w-[80%] p-5 md:p-7">
+              <div className="border dark:border-[#011743] border-[#CED2D4] dark:bg-[#030318] w-[90vw] sm:w-[70vw] xl:w-full rounded">
                 <div className="px-4 pt-3 pb-2">
                   <div className="flex gap-2">
                     <span className="font-semibold">Todo</span>
@@ -92,8 +94,8 @@ function ToDo() {
                   </div>
                 </div>
                 <div className="overflow-x-auto w-[90vw] sm:w-[70vw] xl:w-full">
-                  <table className="min-w-300 xl:w-full border-collapse whitespace-nowrap border dark:border-[#011743] dark:bg-[#030318] w-full my-2 align-middle items-center">
-                    <tr className="bg-gray-200 font-semibold border dark:bg-[#030318] dark:border-[#011743]">
+                  <table className="min-w-200 xl:w-full border-collapse whitespace-nowrap  dark:bg-[#030318] w-full my-2 align-middle items-center">
+                    <tr className="bg-gray-200 font-semibold border-t border-b border-[#CED2D4] dark:bg-[#030318] dark:border-[#011743]">
                       <th className="text-start pl-4 py-3">Task Title</th>
                       <th className="text-start">Created Date</th>
                       <th className="text-start">Status</th>
@@ -105,7 +107,7 @@ function ToDo() {
                     {todo.map((item) => (
                       <tr
                         key={item.id}
-                        className="border-b dark:border-[#011743]"
+                        className="border-b dark:border-[#011743] border-[#CED2D4]"
                       >
                         <td className="p-3">
                           <p className="text-[15px] w-fit dark:text-[#DBE0E6] text-[#6D777F] font-semibold hover:text-blue-600 cursor-pointer">

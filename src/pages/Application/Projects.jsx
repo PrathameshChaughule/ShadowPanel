@@ -15,20 +15,22 @@ import TableGrid from "../../components/Projects/TableGrid";
 import { useState } from "react";
 
 function Projects() {
-  const [show, setShow] = useState("one"); 
+  const [show, setShow] = useState("one");
   return (
     <div>
       <Navbar>
         <div className="flex flex-col gap-7 bg-white dark:bg-[#0C0C20] rounded p-3 sm:p-[24px]">
           <div className="flex text-sm p-2 justify-around sm:justify-between">
-            <h4 className="md:text-[1.125rem] font-bold">Projects</h4>
+            <h4 className="md:text-[1.125rem] font-bold hidden sm:block">
+              Projects
+            </h4>
             <p>
               Home &gt; Applications &gt;
               <span className="md:text-[1rem] font-medium"> Projects</span>
             </p>
           </div>
           <div className="flex justify-around flex-wrap gap-7">
-            <div className=" p-5 pt-4 shadow shadow-gray-400 dark:shadow-[#011743] dark:bg-[#030318] rounded w-[23%]">
+            <div className=" p-5 pt-4 shadow shadow-gray-400 dark:shadow-[#011743] dark:bg-[#030318] rounded w-[86%] sm:w-[78%] xl:w-[23%]">
               <div className="mb-3 flex items-center justify-between relative">
                 <div>
                   <p className="text-gray-400 ">Total Projects</p>
@@ -45,7 +47,7 @@ function Projects() {
               </div>
               <div className="flex text-[16px] font-medium"></div>
             </div>
-            <div className=" p-5 pt-4 shadow shadow-gray-400 dark:shadow-[#011743] dark:bg-[#030318] rounded w-[23%]">
+            <div className=" p-5 pt-4 shadow shadow-gray-400 dark:shadow-[#011743] dark:bg-[#030318] rounded w-[86%] mt-3 sm:w-[78%] sm:mt-0 xl:w-[23%]">
               <div className="mb-3 flex items-center justify-between">
                 <div>
                   <p className="text-gray-400 ">Active</p>
@@ -57,7 +59,7 @@ function Projects() {
               </div>
               <div className="flex text-[16px] font-medium"></div>
             </div>
-            <div className=" p-5 pt-4 shadow shadow-gray-400 dark:shadow-[#011743] dark:bg-[#030318] rounded w-[23%]">
+            <div className=" p-5 pt-4 shadow shadow-gray-400 dark:shadow-[#011743] dark:bg-[#030318] sm:mt-7 w-[86%] mt-3  xl:mt-0 rounded sm:w-[78%] xl:w-[23%]">
               <div className="mb-3 flex items-center justify-between">
                 <div>
                   <p className="text-gray-400 ">InProgress</p>
@@ -69,7 +71,7 @@ function Projects() {
               </div>
               <div className="flex text-[16px] font-medium"></div>
             </div>
-            <div className=" p-5 pt-4 shadow shadow-gray-400 dark:shadow-[#011743] dark:bg-[#030318] rounded w-[23%]">
+            <div className=" p-5 pt-4 shadow shadow-gray-400 dark:shadow-[#011743] dark:bg-[#030318] sm:mt-7 w-[86%] mt-3 xl:mt-0 rounded sm:w-[78%] xl:w-[23%]">
               <div className="mb-3 flex items-center justify-between">
                 <div>
                   <p className="text-gray-400 ">Completed</p>
@@ -82,7 +84,7 @@ function Projects() {
               <div className="flex text-[16px] font-medium"></div>
             </div>
           </div>
-          <div className="flex justify-between items-center">
+          <div className="flex flex-col gap-3 sm:flex-row justify-between items-center">
             <div className="flex items-center gap-2 border border-gray-400 dark:border-[#011743] p-3 py-1 rounded ">
               <CiSearch />
               <input
@@ -91,7 +93,7 @@ function Projects() {
                 className="outline-none border-none"
               />
             </div>
-            <div className="flex gap-3">
+            <div className="flex gap-3 flex-wrap justify-center">
               <div className="flex text-[25px] p-1 px-2 border dark:border-[#011743] border-gray-400 rounded gap-2">
                 <TbListTree
                   onClick={() => setShow("one")}
@@ -122,7 +124,7 @@ function Projects() {
                   <option value="">Sort By : Oldest</option>
                 </select>
               </div>
-              <div className="flex items-center gap-2 border px-3 dark:border-[#011743] rounded text-white bg-blue-600 cursor-pointer hover:bg-blue-700">
+              <div className="flex h-10 items-center gap-2 border px-3 dark:border-[#011743] rounded text-white bg-blue-600 cursor-pointer hover:bg-blue-700">
                 <FaPlus />
                 <span className="font-semibold">Add New</span>
               </div>

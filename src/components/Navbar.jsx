@@ -105,7 +105,7 @@ function Navbar({ children }) {
             </div>
           </div>
         </div>
-        <div className="overflow-y-auto dark:text-white dark:bg-[#0C0C20]">
+        <div className="overflow-y-auto h-screen flex flex-col justify-between dark:text-white dark:bg-[#0C0C20]">
           {children}
           <Footer />
         </div>

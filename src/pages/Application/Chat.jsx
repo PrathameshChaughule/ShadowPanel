@@ -8,16 +8,18 @@ import { LuPhone } from "react-icons/lu";
 import { BsSend, BsThreeDotsVertical } from "react-icons/bs";
 import { TbMoodSmileBeam, TbPhotoPlus } from "react-icons/tb";
 import { admin, contacts } from "../../data/chatData";
+import { RxCross2 } from "react-icons/rx";
 
 function Chat() {
   const [activeChat, setActiveChat] = useState(contacts[0]);
+  const [openChat, setOpenChat] = useState(1);
 
   return (
     <div>
       <Navbar>
-        <div className="flex flex-col gap-7 sm:p-[24px]">
+        <div className="flex flex-col gap-7 p-2 sm:p-[24px]">
           <div className="flex text-sm p-2 justify-around sm:justify-between mb-[-15px]">
-            <h4 className="md:text-[1.125rem] font-semibold">Chat</h4>
+            <h4 className="md:text-[1.125rem] font-semibold hidden sm:block">Chat</h4>
             <p>
               Home &gt; Application &gt;{" "}
               <span className="md:text-[1rem] font-medium">Chat</span>
@@ -25,7 +27,11 @@ function Chat() {
           </div>
           <div className="w-[100%] bg-white border border-[#CED2D4] dark:border-[#011743] dark:bg-[#030318] flex rounded">
             {/* Left Side */}
-            <div className="w-[28%] border-r dark:border-[#011743] border-[#CED2D4]">
+            <div
+              className={`${
+                openChat !== null ? "hidden" : "block"
+              } w-[100%] lg:block lg:w-87 xl:w-[28%] border-r dark:border-[#011743] border-[#CED2D4]`}
+            >
               <div className="flex justify-between border-b dark:border-[#011743] border-[#CED2D4] items-center p-2.5 px-3">
                 <div className="flex items-center gap-2">
                   <img
@@ -59,7 +65,10 @@ function Chat() {
                     {contacts.map((c) => (
                       <div
                         key={c.id}
-                        onClick={() => setActiveChat(c)}
+                        onClick={() => {
+                          setActiveChat(c);
+                          setOpenChat(!null);
+                        }}
                         className={`
                                   flex justify-between p-2 px-2.5 rounded cursor-pointer
                                   hover:bg-gray-50 dark:hover:bg-[#1E2930]
@@ -101,8 +110,16 @@ function Chat() {
               </div>
             </div>
             {/* Right Side */}
-            <div className="w-[72%]">
-              <Chat1 admin={admin} chatData={activeChat} />
+            <div
+              className={`${
+                openChat !== null ? "block" : "hidden"
+              } lg:block w-[100%] lg:w-[72%]`}
+            >
+              <Chat1
+                admin={admin}
+                chatData={activeChat}
+                setOpenChat={setOpenChat}
+              />
             </div>
           </div>
         </div>
@@ -111,7 +128,7 @@ function Chat() {
   );
 }
 
-function Chat1({ admin, chatData }) {
+function Chat1({ admin, chatData, setOpenChat }) {
   return (
     <div>
       <div className="flex justify-between border-b dark:border-[#011743] border-[#CED2D4] items-center p-2.5 px-3">
@@ -125,15 +142,21 @@ function Chat1({ admin, chatData }) {
             </span>
           </div>
         </div>
-        <div className="flex gap-2 text-black text-xl">
-          <span className="bg-gray-200  text-center p-2.5 rounded cursor-pointer hover:bg-gray-300 dark:bg-[#3C4056] dark:text-white dark:hover:bg-[#3c40568f]">
+        <div className="flex gap-1 sm:gap-2 text-black text-[12px] items-center sm:text-xl">
+          <span className="bg-gray-200 text-center p-2 sm:p-2.5 rounded cursor-pointer hover:bg-gray-300 dark:bg-[#3C4056] dark:text-white dark:hover:bg-[#3c40568f]">
             <LuPhone />
           </span>
-          <span className="bg-gray-200  text-center p-2.5 rounded cursor-pointer hover:bg-gray-300 dark:bg-[#3C4056] dark:text-white dark:hover:bg-[#3c40568f]">
+          <span className="bg-gray-200 text-center p-2 sm:p-2.5 rounded cursor-pointer hover:bg-gray-300 dark:bg-[#3C4056] dark:text-white dark:hover:bg-[#3c40568f]">
             <IoVideocamOutline />
           </span>
-          <span className="bg-gray-200  text-center p-2.5 rounded cursor-pointer hover:bg-gray-300 dark:bg-[#3C4056] dark:text-white dark:hover:bg-[#3c40568f]">
+          <span className="bg-gray-200 text-center p-2 sm:p-2.5 rounded cursor-pointer hover:bg-gray-300 dark:bg-[#3C4056] dark:text-white dark:hover:bg-[#3c40568f]">
             <IoIosInformationCircleOutline />
+          </span>
+          <span
+            onClick={() => setOpenChat(null)}
+            className="bg-gray-200 lg:hidden text-center p-2 sm:p-2.5 rounded cursor-pointer hover:bg-gray-300 dark:bg-[#3C4056] dark:text-white dark:hover:bg-[#3c40568f]"
+          >
+            <RxCross2 />
           </span>
         </div>
       </div>
@@ -207,24 +230,24 @@ function Chat1({ admin, chatData }) {
         ))}
       </div>
       <div className="flex justify-between border-t dark:border-[#011743] border-[#CED2D4] items-center p-2.5 px-3">
-        <div className=" ml-3">
+        <div className="w-full ml-3">
           <input
             type="text"
-            className="w-150 border-none outline-none"
+            className="w-full border-none outline-none"
             placeholder="Type Something"
           />
         </div>
-        <div className="flex gap-2 text-black text-xl">
-          <span className="bg-gray-200  text-center p-2.5 rounded cursor-pointer hover:bg-gray-300 dark:bg-[#3C4056] dark:text-white dark:hover:bg-[#3c40568f]">
+        <div className="flex gap-1 sm:gap-2 text-black text-[12px] sm:text-xl">
+          <span className="bg-gray-200  text-center p-2 sm:p-2.5 rounded cursor-pointer hover:bg-gray-300 dark:bg-[#3C4056] dark:text-white dark:hover:bg-[#3c40568f]">
             <TbPhotoPlus />
           </span>
-          <span className="bg-gray-200  text-center p-2.5 rounded cursor-pointer hover:bg-gray-300 dark:bg-[#3C4056] dark:text-white dark:hover:bg-[#3c40568f]">
+          <span className="bg-gray-200  text-center p-2 sm:p-2.5 rounded cursor-pointer hover:bg-gray-300 dark:bg-[#3C4056] dark:text-white dark:hover:bg-[#3c40568f]">
             <TbMoodSmileBeam />
           </span>
-          <span className="bg-gray-200  text-center p-2.5 rounded cursor-pointer hover:bg-gray-300 dark:bg-[#3C4056] dark:text-white dark:hover:bg-[#3c40568f]">
+          <span className="bg-gray-200  text-center p-2 sm:p-2.5 rounded cursor-pointer hover:bg-gray-300 dark:bg-[#3C4056] dark:text-white dark:hover:bg-[#3c40568f]">
             <BsThreeDotsVertical />
           </span>
-          <span className="bg-blue-600 text-white text-center p-2.5 rounded cursor-pointer hover:bg-blue-700">
+          <span className="bg-blue-600 text-white text-center p-2 sm:p-2.5 rounded cursor-pointer hover:bg-blue-700">
             <BsSend />
           </span>
         </div>
