@@ -19,7 +19,7 @@ function Notifications() {
               </span>
             </p>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col gap-2 sm:flex-row items-center justify-between">
             <span className="font-semibold">Total Unread : 02</span>
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-1 font-semibold px-2.5 py-1 rounded dark:bg-[#3C4056] dark:hover:bg-[#3C4056]/80 bg-[#E6EAEC] cursor-pointer hover:bg-[#E6EAEC]/70">
@@ -33,7 +33,7 @@ function Notifications() {
             </div>
           </div>
           <div className="flex flex-col gap-4">
-            <div className="border p-3.5 rounded border-[#CED2D4] dark:border-[#11112F] hover:-translate-y-1 transition-all hover:shadow-md hover:shadow-gray-300 dark:hover:shadow-[#11112F] flex items-center justify-between">
+            <div className="border p-3.5 flex-col gap-2 sm:flex-row rounded border-[#CED2D4] dark:border-[#11112F] hover:-translate-y-1 transition-all hover:shadow-md hover:shadow-gray-300 dark:hover:shadow-[#11112F] flex  sm:items-center justify-between">
               <div className="flex items-center gap-3">
                 <img
                   src="/assets/images/avatar2.jpg"

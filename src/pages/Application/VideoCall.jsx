@@ -32,7 +32,7 @@ function VideoCall() {
               <span className="md:text-[1rem] font-medium">Video Call</span>
             </p>
           </div>
-          <div className="flex text-[10px] sm:text-lg gap-2 mb-[-16px] sm:mb-[-10px] w-fit ml-[4vw] px-2 sm:px-4 hover:bg-blue-700 items-center cursor-pointer justify-center bg-blue-600 text-white p-1 sm:p-1.5 rounded font-semibold">
+          <div className="flex text-[10px] sm:text-lg gap-2 mb-[-16px] sm:mb-[-10px] w-fit ml-[4vw] sm:ml-3 px-2 sm:px-4 hover:bg-blue-700 items-center cursor-pointer justify-center bg-blue-600 text-white p-1 sm:p-1.5 rounded font-semibold">
             <FaRegSquarePlus />
             <span>Add Participant</span>
           </div>

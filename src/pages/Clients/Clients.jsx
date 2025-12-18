@@ -13,7 +13,7 @@ function Clients() {
   return (
     <div>
       <Navbar>
-        <div className="flex flex-col gap-5 m-6 bg-white dark:bg-[#030318] rounded p-3 sm:p-[24px]">
+        <div className="flex flex-col gap-4 sm:gap-5 sm:m-6 bg-white dark:bg-[#030318] rounded p-3 sm:p-[24px]">
           <div className="flex text-sm p-2 justify-around sm:justify-between">
             <h4 className="md:text-[1.125rem] font-bold">Clients</h4>
             <p>
@@ -21,8 +21,8 @@ function Clients() {
               <span className="md:text-[1rem] font-medium"> Clients</span>
             </p>
           </div>
-          <div className="flex justify-around flex-wrap gap-7">
-            <div className=" p-5 pt-4 shadow shadow-gray-400 dark:shadow-[#011743] dark:bg-[#030318] rounded w-[23%]">
+          <div className="flex justify-around flex-wrap gap-2 sm:gap-7">
+            <div className=" p-5 pt-4 shadow shadow-gray-400 dark:shadow-[#011743] dark:bg-[#030318] rounded w-[86%] sm:w-[48%] xl:w-[23%]">
               <div className="flex items-center justify-between relative">
                 <div>
                   <p className="text-gray-400 ">Total Clients</p>
@@ -39,7 +39,7 @@ function Clients() {
                 <span className="text-gray-400"> from last month</span>
               </div>
             </div>
-            <div className=" p-5 pt-4 shadow shadow-gray-400 dark:shadow-[#011743] dark:bg-[#030318] rounded w-[23%]">
+            <div className=" p-5 pt-4 shadow shadow-gray-400 dark:shadow-[#011743] dark:bg-[#030318] rounded w-[86%] mt-3 sm:w-[48%] sm:mt-0 xl:w-[23%]">
               <div className="flex items-center justify-between relative">
                 <div>
                   <p className="text-gray-400 ">Active Clients</p>
@@ -56,7 +56,7 @@ function Clients() {
                 <span className="text-gray-400"> from last month</span>
               </div>
             </div>
-            <div className=" p-5 pt-4 shadow shadow-gray-400 dark:shadow-[#011743] dark:bg-[#030318] rounded w-[23%]">
+            <div className=" p-5 pt-4 shadow shadow-gray-400 dark:shadow-[#011743] dark:bg-[#030318] sm:mt-7 w-[86%] mt-3  xl:mt-0 rounded sm:w-[48%] xl:w-[23%]">
               <div className="flex items-center justify-between relative">
                 <div>
                   <p className="text-gray-400 ">Inactive Clients</p>
@@ -73,7 +73,7 @@ function Clients() {
                 <span className="text-gray-400"> from last month</span>
               </div>
             </div>
-            <div className=" p-5 pt-4 shadow shadow-gray-400 dark:shadow-[#011743] dark:bg-[#030318] rounded w-[23%]">
+            <div className=" p-5 pt-4 shadow shadow-gray-400 dark:shadow-[#011743] dark:bg-[#030318] sm:mt-7 w-[86%] mt-3 xl:mt-0 rounded sm:w-[48%] xl:w-[23%]">
               <div className="flex items-center justify-between relative">
                 <div>
                   <p className="text-gray-400 ">Achieved Clients</p>
@@ -91,7 +91,7 @@ function Clients() {
               </div>
             </div>
           </div>
-          <div className="flex justify-between items-center">
+          <div className="flex flex-col gap-3 sm:flex-row justify-between items-center">
             <div className="flex items-center gap-2 border border-gray-400 dark:border-[#011743] p-3 py-1 rounded ">
               <CiSearch />
               <input
@@ -100,7 +100,7 @@ function Clients() {
                 className="outline-none border-none"
               />
             </div>
-            <div className="flex gap-3">
+            <div className="flex gap-3 flex-wrap justify-center">
               <div className="flex text-[25px] p-1 px-2 border dark:border-[#011743] border-gray-400 rounded gap-2">
                 <TbListTree
                   onClick={() => setShow("one")}

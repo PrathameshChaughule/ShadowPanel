@@ -12,7 +12,7 @@ function Teams() {
   return (
     <div>
       <Navbar>
-        <div className="flex flex-col gap-5 m-6 bg-white dark:bg-[#030318]  rounded p-3 sm:p-[24px]">
+        <div className="flex flex-col gap-5 sm:m-6 bg-white dark:bg-[#030318] rounded p-3 sm:p-[24px]">
           <div className="flex text-sm justify-around sm:justify-between">
             <h4 className="md:text-[1.125rem] font-bold">Teams</h4>
             <p>
@@ -20,7 +20,7 @@ function Teams() {
               <span className="md:text-[1rem] font-medium"> Teams</span>
             </p>
           </div>
-          <div className="flex justify-between items-center">
+          <div className="flex flex-col gap-3 sm:flex-row justify-between items-center">
             <div className="flex items-center gap-2 border border-gray-400 dark:border-[#011743] p-3 py-1 rounded ">
               <CiSearch />
               <input
@@ -29,7 +29,7 @@ function Teams() {
                 className="outline-none border-none"
               />
             </div>
-            <div className="flex gap-3">
+            <div className="flex gap-3 flex-wrap justify-center">
               <div className="flex text-[25px] p-1 px-2 border dark:border-[#011743] border-gray-400 rounded gap-2">
                 <TbListTree
                   onClick={() => setShow("one")}

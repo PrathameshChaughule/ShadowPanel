@@ -5,8 +5,8 @@ import { teams } from "../../data/teamsData";
 function TeamsTableList() {
   return (
     <div>
-      <div className="">
-        <table className="border border-[#D1D5DC] dark:border-[#011743] whitespace-nowrap">
+      <div className="overflow-x-auto w-[93vw] md:w-[70vw] xl:w-full border sm:border-none border-[#D1D5DC] dark:border-[#011743]">
+        <table className="min-w-300 xl:w-full border-collapse border border-[#D1D5DC] dark:border-[#011743] whitespace-nowrap">
           <tr className="bg-[#E6EAEC] dark:bg-[#030318] border-b border-[#D1D5DC] dark:border-[#011743]">
             <th className="text-start px-4 py-3 w-55">Team Name</th>
             <th className="text-start w-55">Team Lead</th>
@@ -34,7 +34,9 @@ function TeamsTableList() {
                     {item.code}
                   </span>
                 </div>
-                <span className="font-semibold hover:text-blue-600 cursor-pointer">{item.teamName}</span>
+                <span className="font-semibold hover:text-blue-600 cursor-pointer">
+                  {item.teamName}
+                </span>
               </td>
               <td>
                 <div className="flex items-center gap-2">
@@ -43,7 +45,9 @@ function TeamsTableList() {
                     className="w-9 rounded-full"
                     alt=""
                   />
-                  <span className="font-semibold hover:text-blue-600 cursor-pointer">{item.lead}</span>
+                  <span className="font-semibold hover:text-blue-600 cursor-pointer">
+                    {item.lead}
+                  </span>
                 </div>
               </td>
               <td>

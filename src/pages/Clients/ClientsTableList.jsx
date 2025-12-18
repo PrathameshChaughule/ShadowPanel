@@ -4,16 +4,16 @@ import { clients } from "../../data/clientsData";
 
 function ClientsTableList() {
   return (
-    <div className="">
-      <table className="border border-[#D1D5DC] dark:border-[#011743] whitespace-nowrap">
+    <div className="overflow-x-auto w-[93vw] md:w-[70vw] xl:w-full border sm:border-none border-[#D1D5DC] dark:border-[#011743]">
+      <table className=" min-w-300 xl:w-full border-collapseborder border-[#D1D5DC] dark:border-[#011743] whitespace-nowrap">
         <tr className="bg-gray-300 dark:bg-[#030318] border-b border-[#D1D5DC] dark:border-[#011743]">
-          <th className="text-start px-4 py-3 w-55">Client</th>
-          <th className="text-start w-50">Company Name</th>
-          <th className="text-start w-40">Email Address</th>
-          <th className="text-start w-40">Phone</th>
-          <th className="text-start w-40">No of Projects</th>
-          <th className="text-start w-35">Created Date</th>
-          <th className="text-start w-25">Status</th>
+          <th className="text-start px-4 py-3">Client</th>
+          <th className="text-start">Company Name</th>
+          <th className="text-start">Email Address</th>
+          <th className="text-start">Phone</th>
+          <th className="text-start">No of Projects</th>
+          <th className="text-start">Created Date</th>
+          <th className="text-start">Status</th>
           <th></th>
         </tr>
         {clients.map((items) => (

@@ -116,7 +116,7 @@ function Email() {
                 <span className="text-gray-500 dark:text-[#DBDCDA]">
                   Labels
                 </span>
-                <div className="flex flex-wrap flex-row xl:flex-col items-center justify-center gap-2">
+                <div className="flex flex-wrap flex-row xl:flex-col items-center justify-center xl:items-start gap-2">
                   <li className="flex items-center px-2 h-8 w-fit xl:mt-2 xl:mb-2 border xl:border-none border-[#CED2D4] dark:border-[#011743] gap-1 hover:text-blue-500 cursor-pointer font-semibold">
                     <GoDotFill className="text-green-500" />
                     Personal

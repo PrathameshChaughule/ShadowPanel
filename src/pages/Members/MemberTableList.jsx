@@ -4,17 +4,17 @@ import { members } from "../../data/membersData";
 
 function MemberTableList() {
   return (
-    <div>
-      <div className="overflow-x-auto w-[90vw] sm:w-[70vw] xl:w-full">
-        <table className="min-w-300 lg:w-full border-collapse border border-[#D1D5DC] dark:border-[#011743] whitespace-nowrap">
+    <div> 
+      <div className="overflow-x-auto w-[94vw] sm:w-[70vw] xl:w-full">
+        <table className="min-w-300 xl:w-full border-collapse border border-[#D1D5DC] dark:border-[#011743] whitespace-nowrap">
           <tr className="bg-gray-300 dark:bg-[#030318] border-b border-[#D1D5DC] dark:border-[#011743]">
-            <th className="text-start px-4 py-3 w-55">Name</th>
-            <th className="text-start w-50">Team</th>
-            <th className="text-start w-40">Work Location</th>
-            <th className="text-start w-40">Email Address</th>
-            <th className="text-start w-40">Phone Number</th>
-            <th className="text-start w-35">Experience</th>
-            <th className="text-start w-25">Status</th>
+            <th className="text-start px-4 py-3">Name</th>
+            <th className="text-start">Team</th>
+            <th className="text-start">Work Location</th>
+            <th className="text-start">Email Address</th>
+            <th className="text-start">Phone Number</th>
+            <th className="text-start">Experience</th>
+            <th className="text-start">Status</th>
             <th></th>
           </tr>
           {members.map((item) => (

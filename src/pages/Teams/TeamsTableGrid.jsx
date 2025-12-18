@@ -5,7 +5,7 @@ import { teams } from "../../data/teamsData";
 function TeamsTableGrid() {
   return (
     <div className="flex flex-col items-center gap-5">
-      <div className="flex justify-between gap-4 items-center flex-wrap">
+      <div className="flex justify-center gap-4 items-center flex-wrap">
         {teams.map((items) => (
           <div
             key={items.id}
