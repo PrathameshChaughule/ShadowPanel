@@ -406,7 +406,7 @@ function AdminDashboard() {
             <div className="p-5 dark:shadow-[#011743] dark:bg-[#030318] pt-4 h-fit md:h-100 shadow overflow-hidden shadow-gray-400 rounded w-[97.5%] xl:w-[56%]">
               <h4 className="text-xl font-bold pb-4">Project Statistics</h4>
               <hr className="mx-[-20px] dark:text-[#011743] text-gray-300 mb-5" />
-              <div className="w-full flex ">
+              <div className="w-full flex ml-[-15px] sm:ml-[-10px]">
                 <BarChart width={"100%"} height={320} data={data1}>
                   <CartesianGrid vertical={false} stroke="#eee" />
                   <XAxis dataKey="date" />
