@@ -13,8 +13,11 @@ import { LuFiles } from "react-icons/lu";
 import { FaRegClock } from "react-icons/fa";
 import ReactApexChart from "react-apexcharts";
 import { PieChart, Pie, Cell, ResponsiveContainer, Label } from "recharts";
+import { useAuth } from "../../contexts/authContext";
+import { Navigate } from "react-router-dom";
 
 function UserDashboard() {
+  const { userLoggedIn } = useAuth();
   const HOURS = [
     "09:00",
     "10:00",
@@ -326,6 +329,11 @@ function UserDashboard() {
 
   return (
     <div>
+      {userLoggedIn ? (
+        <Navigate to={"/"} replace={true} />
+      ) : (
+        <Navigate to={"/login"} replace={true} />
+      )}
       <Navbar>
         <div className="flex flex-col w-full gap-7 sm:p-[24px]">
           <div className="flex text-sm p-2 justify-around sm:justify-between mb-[-15px]">

@@ -28,43 +28,56 @@ import EmailVerification from "./pages/Authentication/EmailVerification";
 import StepVerification from "./pages/Authentication/StepVerification";
 import ErrorPages from "./pages/Authentication/ErrorPages";
 import Settings from "./pages/Settings/Settings";
+import { AuthProvider } from "./contexts/authContext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Profile from "./pages/profile/profile";
 
 function App() {
   return (
     <div className="h-[100vh] w-[100vw] bg-[#F9F9FA]">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<AdminDashboard />} />
-          <Route path="/user" element={<UserDashboard />} />
-          <Route path="/calender" element={<Calender />} />
-          <Route path="/chat" element={<Chat />} />
-          <Route path="/contacts" element={<Contacts />} />
-          <Route path="/email" element={<Email />} />
-          <Route path="/file" element={<FileManager />} />
-          <Route path="/invoice" element={<Invoices />} />
-          <Route path="/kanban" element={<KanbanBoard />} />
-          <Route path="/notes" element={<Notes />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/social" element={<SocialFeed />} />
-          <Route path="/todo" element={<ToDo />} />
-          <Route path="/videocall" element={<VideoCall />} />
-          <Route path="/voicecall" element={<VoiceCall />} />
-          <Route path="/members" element={<Members />} />
-          <Route path="/teams" element={<Teams />} />
-          <Route path="/clients" element={<Clients />} />
-          <Route path="/rolesPermission" element={<RolesPermission />} />
-          <Route path="/activityLogs" element={<ActivityLogs />} />
-          <Route path="/notifications" element={<Notifications />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/forgetPass" element={<ForgetPassword />} />
-          <Route path="/resetPass" element={<ResetPassword />} />
-          <Route path="/emailVer" element={<EmailVerification />} />
-          <Route path="/2step" element={<StepVerification />} />
-          <Route path="/error" element={<ErrorPages />} />
-        </Routes>
-      </BrowserRouter>
+      <ToastContainer
+        className="absolute z-50"
+        position="top-right"
+        autoClose={3000}
+        pauseOnHover
+      />
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<AdminDashboard />} />
+            <Route path="/user" element={<UserDashboard />} />
+            <Route path="/calender" element={<Calender />} />
+            <Route path="/chat" element={<Chat />} />
+            <Route path="/contacts" element={<Contacts />} />
+            <Route path="/email" element={<Email />} />
+            <Route path="/file" element={<FileManager />} />
+            <Route path="/invoice" element={<Invoices />} />
+            <Route path="/kanban" element={<KanbanBoard />} />
+            <Route path="/notes" element={<Notes />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/social" element={<SocialFeed />} />
+            <Route path="/todo" element={<ToDo />} />
+            <Route path="/videocall" element={<VideoCall />} />
+            <Route path="/voicecall" element={<VoiceCall />} />
+            <Route path="/members" element={<Members />} />
+            <Route path="/teams" element={<Teams />} />
+            <Route path="/clients" element={<Clients />} />
+            <Route path="/rolesPermission" element={<RolesPermission />} />
+            <Route path="/activityLogs" element={<ActivityLogs />} />
+            <Route path="/notifications" element={<Notifications />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/forgetPass" element={<ForgetPassword />} />
+            <Route path="/resetPass" element={<ResetPassword />} />
+            <Route path="/emailVer" element={<EmailVerification />} />
+            <Route path="/2step" element={<StepVerification />} />
+            <Route path="/error" element={<ErrorPages />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
     </div>
   );
 }

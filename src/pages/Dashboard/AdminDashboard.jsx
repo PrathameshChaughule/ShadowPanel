@@ -22,8 +22,11 @@ import {
   Pie,
   Cell,
 } from "recharts";
+import { useAuth } from "../../contexts/authContext";
+import { Navigate } from "react-router-dom";
 
 function AdminDashboard() {
+  const { userLoggedIn } = useAuth();
   const data = [
     { year: "2025", female: 90, male: 60 },
     { year: "2026", female: 60, male: 75 },
@@ -49,6 +52,11 @@ function AdminDashboard() {
 
   return (
     <div>
+      {userLoggedIn ? (
+        <Navigate to={"/"} replace={true} />
+      ) : (
+        <Navigate to={"/login"} replace={true} />
+      )}
       <Navbar>
         <div className="flex flex-col w-full gap-7 sm:p-[24px]">
           <div className="flex text-sm p-2 justify-around sm:justify-between mb-[-15px]">
