@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { auth } from "../../firebase/firebase";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, getRedirectResult } from "firebase/auth";
 
 const AuthContext = React.createContext();
 
-export function useAuth() { 
+export function useAuth() {
   return useContext(AuthContext);
 }
 
@@ -14,6 +14,16 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    getRedirectResult(auth)
+      .then((result) => {
+        if (result?.user) {
+          setCurrentUser(result.user);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
     const unsubscribe = onAuthStateChanged(auth, initializeUser);
     return unsubscribe;
   }, []);

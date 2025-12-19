@@ -27,7 +27,7 @@ function Register() {
     e.preventDefault();
     if (password !== confirmPassword) {
       toast.error("Passwords do not match");
-      return
+      return;
     }
     if (!isRegistering) {
       setIsRegistering(true);
