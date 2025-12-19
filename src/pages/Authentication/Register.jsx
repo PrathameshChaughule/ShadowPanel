@@ -25,6 +25,10 @@ function Register() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match");
+      return
+    }
     if (!isRegistering) {
       setIsRegistering(true);
       try {
