@@ -9,7 +9,6 @@ import { LuSun } from "react-icons/lu";
 import { doSignOut } from "../firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/authContext";
-import Profile from "../pages/profile/profile";
 
 function Navbar({ children }) {
   const navigate = useNavigate();
@@ -126,7 +125,7 @@ function Navbar({ children }) {
           </div>
         </div>
         <div className="overflow-y-auto h-screen flex flex-col justify-between dark:text-white dark:bg-[#0C0C20]">
-          {isProfileOpen && <Profile />}
+          
           {children}
           <Footer />
         </div>

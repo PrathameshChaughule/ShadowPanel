@@ -31,7 +31,6 @@ import Settings from "./pages/Settings/Settings";
 import { AuthProvider } from "./contexts/authContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Profile from "./pages/profile/profile";
 
 function App() {
   return (
@@ -74,7 +73,6 @@ function App() {
             <Route path="/emailVer" element={<EmailVerification />} />
             <Route path="/2step" element={<StepVerification />} />
             <Route path="/error" element={<ErrorPages />} />
-            <Route path="/profile" element={<Profile />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>
