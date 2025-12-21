@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { CiMail } from "react-icons/ci";
 import { FiUser } from "react-icons/fi";
 import { GoEye, GoEyeClosed } from "react-icons/go";
-import { Navigate, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import AuthLeftSide from "../../components/AuthLeftSide";
 import {
   doCreateUserWithEmailAndPassword,
@@ -10,45 +10,66 @@ import {
 } from "../../firebase/auth";
 import { useAuth } from "../../contexts/authContext";
 import { toast } from "react-toastify";
+import { auth, db } from "../../firebase/firebase";
+import { doc, setDoc } from "firebase/firestore";
+import { VscTriangleDown } from "react-icons/vsc";
 
 function Register() {
   const [showPassword, setShowPassword] = useState(false);
-
-  const navigate = useNavigate();
-  const { userLoggedIn } = useAuth();
-
-  const [name, setName] = useState("");
+  const [fname, setFName] = useState("");
+  const [lname, setLName] = useState("");
   const [email, setEmail] = useState("");
+  const [role, setRole] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isRegistering, setIsRegistering] = useState(false);
+  const [openRole, setOpenRole] = useState(false);
+  const navigate = useNavigate();
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    if (!role) {
+      toast.error("Role is required");
+      return;
+    }
     if (password !== confirmPassword) {
       toast.error("Passwords do not match");
       return;
     }
-    if (!isRegistering) {
-      setIsRegistering(true);
-      try {
-        await doCreateUserWithEmailAndPassword(email, password);
-        toast.success("Account Created Successfully 🎉");
-      } catch (error) {
-        if (error.code === "auth/email-already-in-use") {
-          toast.error("Email already registered");
-        }
-        if (error.code === "auth/invalid-email") {
-          toast.error("Invalid email address");
-        }
-        if (error.code === "auth/weak-password") {
-          toast.error("Password should be at least 6 characters");
-        } else {
-          toast.error("Registration failed");
-        }
-      } finally {
-        setIsRegistering(false);
+    if (isRegistering) return;
+    setIsRegistering(true);
+    try {
+      const userCredential = await doCreateUserWithEmailAndPassword(
+        email,
+        password
+      );
+
+      const user = userCredential.user;
+      await setDoc(doc(db, "Users", user.uid), {
+        firstName: fname,
+        lastName: lname,
+        email: user.email,
+        role: role,
+        createdAt: new Date(),
+      });
+      if (role === "Admin") {
+        navigate("/", { replace: true });
+      } else {
+        navigate("/user", { replace: true });
       }
+      toast.success("Account Created Successfully 🎉");
+    } catch (error) {
+      if (error.code === "auth/email-already-in-use") {
+        toast.error("Email already registered");
+      } else if (error.code === "auth/invalid-email") {
+        toast.error("Invalid email address");
+      } else if (error.code === "auth/weak-password") {
+        toast.error("Password should be at least 6 characters");
+      } else {
+        toast.error("Registration failed");
+      }
+    } finally {
+      setIsRegistering(false);
     }
   };
 
@@ -59,12 +80,12 @@ function Register() {
       doSignInWithGoogle().catch((err) => {
         setIsRegistering(false);
       });
+      navigate("/user", { replace: true });
     }
   };
 
   return (
     <>
-      {userLoggedIn && <Navigate to={"/"} replace={true} />}
       <div className="w-[100vw] h-[100vh] flex">
         <div className="hidden md:block w-[50%] h-full bg-gradient-to-b from-[#324CD4] to-[#11206C] relative overflow-hidden">
           <AuthLeftSide />
@@ -87,23 +108,43 @@ function Register() {
               onSubmit={onSubmit}
               className="w-[95%] mt-2 xl:mt-3 flex flex-col gap-1 xl:gap-3"
             >
-              <div className="flex flex-col gap-1 xl:gap-2">
-                <label
-                  htmlFor=""
-                  className="text-[#6D777F] text-[14px] sm:text-[16px]"
-                >
-                  Full Name
-                </label>
-                <div className="border h-8 rounded border-[#CED2D4] flex items-center">
-                  <input
-                    type="text"
-                    className="outline-none border-none h-full w-[95%] p-2"
-                    required
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                  <FiUser className="text-[#6D777F] mr-2" />
+              <div className="flex justify-between">
+                <div className="flex w-[49%] flex-col gap-1 xl:gap-2">
+                  <label
+                    htmlFor=""
+                    className="text-[#6D777F] text-[14px] sm:text-[16px]"
+                  >
+                    First Name
+                  </label>
+                  <div className="border h-8 rounded border-[#CED2D4] flex items-center">
+                    <input
+                      type="text"
+                      className="outline-none border-none h-full w-[95%] p-2"
+                      required
+                      onChange={(e) => setFName(e.target.value)}
+                    />
+                    <FiUser className="text-[#6D777F] mr-2" />
+                  </div>
+                </div>
+                <div className="flex flex-col w-[49%] gap-1 xl:gap-2">
+                  <label
+                    htmlFor=""
+                    className="text-[#6D777F] text-[14px] sm:text-[16px]"
+                  >
+                    Last Name
+                  </label>
+                  <div className="border h-8 rounded border-[#CED2D4] flex items-center">
+                    <input
+                      type="text"
+                      className="outline-none border-none h-full w-[95%] p-2"
+                      required
+                      onChange={(e) => setLName(e.target.value)}
+                    />
+                    <FiUser className="text-[#6D777F] mr-2" />
+                  </div>
                 </div>
               </div>
+
               <div className="flex flex-col gap-1 xl:gap-2">
                 <label
                   htmlFor=""
@@ -126,50 +167,98 @@ function Register() {
                   htmlFor=""
                   className="text-[#6D777F] text-[14px] sm:text-[16px]"
                 >
-                  Password
+                  Role
                 </label>
-                <div className="border h-8 rounded border-[#CED2D4] flex items-center">
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    className="outline-none border-none h-full w-[95%] p-2"
-                    required
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                  <div
-                    className="cursor-pointer mr-2"
-                    onClick={() => setShowPassword(!showPassword)}
-                  >
-                    {showPassword ? (
-                      <GoEyeClosed className="text-[#6D777F]" />
-                    ) : (
-                      <GoEye className="text-[#6D777F]" />
+                <div className="border h-8 rounded border-[#CED2D4] flex relative items-center">
+                  <div className="outline-none h-full cursor-pointer w-full border-none text-gray-400">
+                    <p
+                      onClick={() => setOpenRole(!openRole)}
+                      className="h-full px-2 py-0.5 flex items-center justify-between"
+                    >
+                      {role || "Select Role"}
+                      <VscTriangleDown
+                        className={openRole ? "rotate-180" : "rotate-0"}
+                      />
+                    </p>
+                    {openRole && (
+                      <div
+                        onClick={() => setOpenRole(false)}
+                        className="bg-white shadow shadow-gray-500 absolute top-9 w-full rounded p-3 flex flex-col gap-1 text-lg"
+                      >
+                        <span
+                          onClick={() => setRole("User")}
+                          className="px-2 rounded cursor-pointer hover:bg-gray-100"
+                        >
+                          User
+                        </span>
+                        <span
+                          onClick={() => setRole("Admin")}
+                          className="px-2 rounded cursor-pointer hover:bg-gray-100"
+                        >
+                          Admin
+                        </span>
+                        <span
+                          onClick={() => setRole("Guest")}
+                          className="px-2 rounded cursor-pointer hover:bg-gray-100"
+                        >
+                          Guest
+                        </span>
+                      </div>
                     )}
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col gap-1 xl:gap-2">
-                <label
-                  htmlFor=""
-                  className="text-[#6D777F] text-[14px] sm:text-[16px]"
-                >
-                  Confirm Password
-                </label>
-                <div className="border h-8 rounded border-[#CED2D4] flex items-center">
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    className="outline-none border-none h-full w-[95%] p-2"
-                    required
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                  />
-                  <div
-                    className="cursor-pointer mr-2"
-                    onClick={() => setShowPassword(!showPassword)}
+              <div className="flex justify-between">
+                <div className="flex w-[49%] flex-col gap-1 xl:gap-2">
+                  <label
+                    htmlFor=""
+                    className="text-[#6D777F] text-[14px] sm:text-[16px]"
                   >
-                    {showPassword ? (
-                      <GoEyeClosed className="text-[#6D777F]" />
-                    ) : (
-                      <GoEye className="text-[#6D777F]" />
-                    )}
+                    Password
+                  </label>
+                  <div className="border h-8 rounded border-[#CED2D4] flex items-center">
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      className="outline-none border-none h-full w-[95%] p-2"
+                      required
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <div
+                      className="cursor-pointer mr-2"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? (
+                        <GoEyeClosed className="text-[#6D777F]" />
+                      ) : (
+                        <GoEye className="text-[#6D777F]" />
+                      )}
+                    </div>
+                  </div>
+                </div>
+                <div className="flex w-[49%] flex-col gap-1 xl:gap-2">
+                  <label
+                    htmlFor=""
+                    className="text-[#6D777F] text-[14px] sm:text-[16px]"
+                  >
+                    Confirm Password
+                  </label>
+                  <div className="border h-8 rounded border-[#CED2D4] flex items-center">
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      className="outline-none border-none h-full w-[95%] p-2"
+                      required
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                    />
+                    <div
+                      className="cursor-pointer mr-2"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? (
+                        <GoEyeClosed className="text-[#6D777F]" />
+                      ) : (
+                        <GoEye className="text-[#6D777F]" />
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>

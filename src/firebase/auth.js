@@ -4,10 +4,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signInWithEmailAndPassword,
-  signInWithRedirect,
 } from "firebase/auth";
-
-const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 export const doCreateUserWithEmailAndPassword = async (email, password) => {
   return createUserWithEmailAndPassword(auth, email, password);
@@ -19,14 +16,13 @@ export const doSignInWithEmailAndPassword = (email, password) => {
 
 export const doSignInWithGoogle = async () => {
   const provider = new GoogleAuthProvider();
-  if (isMobile) {
-    return signInWithRedirect(auth, provider);
-  } else {
-    return signInWithPopup(auth, provider);
-  }
+  const result = await signInWithPopup(auth, provider);
+  return result;
 };
 
 export const doSignOut = () => {
+  localStorage.removeItem("isAuth");
+  localStorage.removeItem("userData");
   return auth.signOut();
 };
 

@@ -1,23 +1,20 @@
 import React, { useState } from "react";
 import { CiMail } from "react-icons/ci";
 import { GoEye, GoEyeClosed } from "react-icons/go";
-import { Navigate, NavLink } from "react-router-dom";
+import { Navigate, NavLink, useNavigate } from "react-router-dom";
 import AuthLeftSide from "../../components/AuthLeftSide";
 import {
   doSignInWithEmailAndPassword,
   doSignInWithGoogle,
 } from "../../firebase/auth";
-import { useAuth } from "../../contexts/authContext";
 import { toast } from "react-toastify";
 
 function Login() {
-  const { userLoggedIn } = useAuth();
-
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSigningIn, setIsSigningIn] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -25,6 +22,13 @@ function Login() {
       setIsSigningIn(true);
       try {
         await doSignInWithEmailAndPassword(email, password);
+        const userData = JSON.parse(localStorage.getItem("userData"));
+
+        if (userData?.role === "Admin") {
+          navigate("/", { replace: true });
+        } else {
+          navigate("/user", { replace: true });
+        }
         toast.success("Login Successfully 🎉");
       } catch (error) {
         if (error.code === "auth/invalid-credential") {
@@ -45,12 +49,12 @@ function Login() {
       doSignInWithGoogle().catch((err) => {
         setIsSigningIn(false);
       });
+      navigate("/user", { replace: true });
     }
   };
 
   return (
     <div>
-      {userLoggedIn && <Navigate to={"/"} replace={true} />}
       <div className="w-[100vw] h-[100vh] flex">
         <div className="hidden md:block w-[50%] h-full bg-gradient-to-b from-[#324CD4] to-[#11206C] relative overflow-hidden">
           <AuthLeftSide />

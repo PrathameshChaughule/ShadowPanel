@@ -9,11 +9,11 @@ import { LuSun } from "react-icons/lu";
 import { doSignOut } from "../firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/authContext";
+import Profile from "./Profile";
 
 function Navbar({ children }) {
   const navigate = useNavigate();
   const { userLoggedIn } = useAuth();
-
   const [isOpen, setIsOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [theme, setTheme] = useState("light");
@@ -30,6 +30,8 @@ function Navbar({ children }) {
     setTheme(storedTheme);
     document.documentElement.classList.toggle("dark", storedTheme === "dark");
   });
+  window.localStorage.setItem("isAuth", userLoggedIn);
+  const userData = JSON.parse(localStorage.getItem("userData"));
 
   return (
     <div className="h-screen flex overflow-hidden">
@@ -104,28 +106,28 @@ function Navbar({ children }) {
                 <LuSun className="text-[20px]" />
               )}
             </div>
-            <div
-              onClick={() => setIsProfileOpen(!isProfileOpen)}
-              className="cursor-pointer p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-900"
-            >
+            <button className="cursor-pointer p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-900">
               <TbBellCheck className="text-[20px] cursor-pointer" />
-            </div>
+            </button>
             {userLoggedIn && (
               <button
-                onClick={() => {
-                  doSignOut().then(() => {
-                    navigate("/login");
-                  });
-                }}
-                className="cursor-pointer p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-900"
+                onClick={() => setIsProfileOpen(!isProfileOpen)}
+                className="cursor-pointer flex p-1 items-center justify-center rounded hover:bg-gray-200 dark:hover:bg-gray-900/30"
               >
-                <CgProfile className="text-[24px] cursor-pointer" />
+                {userData ? (
+                  <span className="text-sm text-amber-600 bg-amber-300 rounded-full font-semibold p-[5px] px-[7px]">
+                    {userData.firstName.charAt(0)}
+                    {userData.lastName.charAt(0)}
+                  </span>
+                ) : (
+                  <CgProfile className="text-[24px] cursor-pointer" />
+                )}
               </button>
             )}
           </div>
         </div>
         <div className="overflow-y-auto h-screen flex flex-col justify-between dark:text-white dark:bg-[#0C0C20]">
-          
+          {isProfileOpen && <Profile />}
           {children}
           <Footer />
         </div>

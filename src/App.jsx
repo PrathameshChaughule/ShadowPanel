@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AdminDashboard from "./pages/Dashboard/AdminDashboard";
 import UserDashboard from "./pages/Dashboard/UserDashboard";
 import Calender from "./pages/Application/Calender";
@@ -31,6 +31,10 @@ import Settings from "./pages/Settings/Settings";
 import { AuthProvider } from "./contexts/authContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ProtectedRoute from "./Routes/ProtectedRoute";
+import UserRoute from "./Routes/UserRoute";
+import AdminRoute from "./Routes/AdminRoute";
+import HomeRedirect from "./Routes/HomeRedirect";
 
 function App() {
   return (
@@ -44,28 +48,6 @@ function App() {
       <AuthProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<AdminDashboard />} />
-            <Route path="/user" element={<UserDashboard />} />
-            <Route path="/calender" element={<Calender />} />
-            <Route path="/chat" element={<Chat />} />
-            <Route path="/contacts" element={<Contacts />} />
-            <Route path="/email" element={<Email />} />
-            <Route path="/file" element={<FileManager />} />
-            <Route path="/invoice" element={<Invoices />} />
-            <Route path="/kanban" element={<KanbanBoard />} />
-            <Route path="/notes" element={<Notes />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/social" element={<SocialFeed />} />
-            <Route path="/todo" element={<ToDo />} />
-            <Route path="/videocall" element={<VideoCall />} />
-            <Route path="/voicecall" element={<VoiceCall />} />
-            <Route path="/members" element={<Members />} />
-            <Route path="/teams" element={<Teams />} />
-            <Route path="/clients" element={<Clients />} />
-            <Route path="/rolesPermission" element={<RolesPermission />} />
-            <Route path="/activityLogs" element={<ActivityLogs />} />
-            <Route path="/notifications" element={<Notifications />} />
-            <Route path="/settings" element={<Settings />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/forgetPass" element={<ForgetPassword />} />
@@ -73,6 +55,36 @@ function App() {
             <Route path="/emailVer" element={<EmailVerification />} />
             <Route path="/2step" element={<StepVerification />} />
             <Route path="/error" element={<ErrorPages />} />
+
+            <Route element={<ProtectedRoute />}>
+              <Route path="/" element={<HomeRedirect />} />
+
+              <Route path="/user" element={<UserDashboard />} />
+              <Route path="/calender" element={<Calender />} />
+              <Route path="/chat" element={<Chat />} />
+              <Route path="/contacts" element={<Contacts />} />
+              <Route path="/file" element={<FileManager />} />
+              <Route path="/kanban" element={<KanbanBoard />} />
+              <Route path="/notes" element={<Notes />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/social" element={<SocialFeed />} />
+              <Route path="/todo" element={<ToDo />} />
+              <Route path="/videocall" element={<VideoCall />} />
+              <Route path="/voicecall" element={<VoiceCall />} />
+              <Route path="/clients" element={<Clients />} />
+              <Route path="/notifications" element={<Notifications />} />
+
+              <Route element={<AdminRoute />}>
+                <Route path="/admin" element={<AdminDashboard />} />
+                <Route path="/email" element={<Email />} />
+                <Route path="/invoice" element={<Invoices />} />
+                <Route path="/members" element={<Members />} />
+                <Route path="/teams" element={<Teams />} />
+                <Route path="/rolesPermission" element={<RolesPermission />} />
+                <Route path="/activityLogs" element={<ActivityLogs />} />
+                <Route path="/settings" element={<Settings />} />
+              </Route>
+            </Route>
           </Routes>
         </BrowserRouter>
       </AuthProvider>

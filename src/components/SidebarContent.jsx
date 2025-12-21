@@ -20,17 +20,18 @@ import {
 import { TiEqualsOutline } from "react-icons/ti";
 import { VscDash } from "react-icons/vsc";
 import { NavLink, useLocation } from "react-router-dom";
+import { auth, db } from "../firebase/firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 function SidebarContent() {
   const [openMenu, setOpenMenu] = useState(null);
   const location = useLocation();
-
   const toggle = (menu) => {
     setOpenMenu(openMenu === menu ? null : menu);
   };
   useEffect(() => {
     if (
-      location.pathname.startsWith("/") ||
+      location.pathname.startsWith("/admin") ||
       location.pathname.startsWith("/user")
     ) {
       setOpenMenu("dashboard");
@@ -111,6 +112,26 @@ function SidebarContent() {
       setOpenMenu("error");
     }
   }, [location.pathname]);
+
+  const [userDetails, setUserDetails] = useState(() => {
+    const saved = localStorage.getItem("userData");
+    return saved ? JSON.parse(saved) : null;
+  });
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
+      if (!user) return;
+      const docRef = doc(db, "Users", user.uid);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        localStorage.setItem("userData", JSON.stringify(data));
+        setUserDetails(data);
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
   return (
     <>
       <div className="dark:text-[#a1a2a7]">
@@ -144,20 +165,24 @@ function SidebarContent() {
           {/* DROPDOWN CONTENT */}
           {openMenu === "dashboard" && (
             <div className="ml-8 mt-1 text-sm">
-              <NavLink
-                to="/"
-                className={({
-                  isActive,
-                }) => `block text-left dark:text-[#8B9CB3] hover:text-blue-600 p-1 rounded flex items-center cursor-pointer 
+              {userDetails?.role === "Admin" && (
+                <>
+                  <NavLink
+                    to="/admin"
+                    className={({
+                      isActive,
+                    }) => `block text-left dark:text-[#8B9CB3] hover:text-blue-600 p-1 rounded flex items-center cursor-pointer 
               ${
                 isActive
                   ? "text-blue-600 dark:text-blue-600 font-semibold"
                   : "text-gray-600"
               }`}
-              >
-                <VscDash className="text-2xl font-extrabold" />
-                Admin Dashboard
-              </NavLink>
+                  >
+                    <VscDash className="text-2xl font-extrabold" />
+                    Admin Dashboard
+                  </NavLink>
+                </>
+              )}
 
               <NavLink
                 to="/user"
@@ -245,20 +270,39 @@ function SidebarContent() {
                 <VscDash className="text-2xl font-extrabold" />
                 Calender
               </NavLink>
-              <NavLink
-                to="/invoice"
-                className={({
-                  isActive,
-                }) => `block text-left p-1 dark:text-[#8B9CB3] hover:text-blue-600 rounded flex items-center cursor-pointer 
-              ${
-                isActive
-                  ? "text-blue-600 dark:text-blue-600 font-semibold"
-                  : "text-gray-600"
-              }`}
-              >
-                <VscDash className="text-2xl font-extrabold" />
-                Invoices
-              </NavLink>
+              {userDetails?.role === "Admin" && (
+                <>
+                  <NavLink
+                    to="/invoice"
+                    className={({
+                      isActive,
+                    }) => `block text-left p-1 dark:text-[#8B9CB3] hover:text-blue-600 rounded flex items-center cursor-pointer 
+                    ${
+                      isActive
+                        ? "text-blue-600 dark:text-blue-600 font-semibold"
+                        : "text-gray-600"
+                    }`}
+                  >
+                    <VscDash className="text-2xl font-extrabold" />
+                    Invoices
+                  </NavLink>
+                  <NavLink
+                    to="/email"
+                    className={({
+                      isActive,
+                    }) => `block text-left p-1 dark:text-[#8B9CB3] hover:text-blue-600 rounded flex items-center cursor-pointer 
+                    ${
+                      isActive
+                        ? "text-blue-600 dark:text-blue-600 font-semibold"
+                        : "text-gray-600"
+                    }`}
+                  >
+                    <VscDash className="text-2xl font-extrabold" />
+                    Email
+                  </NavLink>
+                </>
+              )}
+
               <NavLink
                 to="/file"
                 className={({
@@ -329,20 +373,7 @@ function SidebarContent() {
                 <VscDash className="text-2xl font-extrabold" />
                 Social Feed
               </NavLink>
-              <NavLink
-                to="/email"
-                className={({
-                  isActive,
-                }) => `block text-left p-1 dark:text-[#8B9CB3] hover:text-blue-600 rounded flex items-center cursor-pointer 
-              ${
-                isActive
-                  ? "text-blue-600 dark:text-blue-600 font-semibold"
-                  : "text-gray-600"
-              }`}
-              >
-                <VscDash className="text-2xl font-extrabold" />
-                Email
-              </NavLink>
+
               <NavLink
                 to="/contacts"
                 className={({
@@ -390,43 +421,47 @@ function SidebarContent() {
         </div>
         <div>
           <span className="text-sm font-semibold">Workforce</span>
-
-          <NavLink
-            to="/members"
-            onClick={() => {
-              toggle("members");
-            }}
-            className={`flex items-center gap-2 mt-2 px-4 p-2 w-full
+          {userDetails?.role === "Admin" && (
+            <>
+              <NavLink
+                to="/members"
+                onClick={() => {
+                  toggle("members");
+                }}
+                className={`flex items-center gap-2 mt-2 px-4 p-2 w-full
               hover:text-blue-600 dark:text-[#8B9CB3] cursor-pointer transition rounded-lg justify-between
               ${
                 openMenu === "members"
                   ? "text-indigo-600 dark:text-[#D8D8DD] dark:bg-[#080B2C] dark:border-indigo-600 font-semibold bg-blue-100 border-l-[3px]"
                   : "text-gray-600"
               }`}
-          >
-            <span className="flex items-center gap-3">
-              <TbUserBolt />
-              <span>Members</span>
-            </span>
-          </NavLink>
-          <NavLink
-            to="/teams"
-            onClick={() => {
-              toggle("teams");
-            }}
-            className={`flex items-center gap-2 mt-2 px-4 p-2 w-full
+              >
+                <span className="flex items-center gap-3">
+                  <TbUserBolt />
+                  <span>Members</span>
+                </span>
+              </NavLink>
+              <NavLink
+                to="/teams"
+                onClick={() => {
+                  toggle("teams");
+                }}
+                className={`flex items-center gap-2 mt-2 px-4 p-2 w-full
               hover:text-blue-600 dark:text-[#8B9CB3] cursor-pointer transition rounded-lg justify-between
               ${
                 openMenu === "teams"
                   ? "text-indigo-600 dark:text-[#D8D8DD] dark:bg-[#080B2C] dark:border-indigo-600 font-semibold bg-blue-100 border-l-[3px]"
                   : "text-gray-600"
               }`}
-          >
-            <span className="flex items-center gap-3">
-              <TbUsersGroup />
-              <span>Teams</span>
-            </span>
-          </NavLink>
+              >
+                <span className="flex items-center gap-3">
+                  <TbUsersGroup />
+                  <span>Teams</span>
+                </span>
+              </NavLink>
+            </>
+          )}
+
           <NavLink
             to="/clients"
             onClick={() => {
@@ -445,42 +480,46 @@ function SidebarContent() {
               <span>Clients</span>
             </span>
           </NavLink>
-          <NavLink
-            to="/rolesPermission"
-            onClick={() => {
-              toggle("roles");
-            }}
-            className={`flex items-center gap-2 mt-2 px-4 p-2 w-full
+          {userDetails?.role === "Admin" && (
+            <>
+              <NavLink
+                to="/rolesPermission"
+                onClick={() => {
+                  toggle("roles");
+                }}
+                className={`flex items-center gap-2 mt-2 px-4 p-2 w-full
               hover:text-blue-600 dark:text-[#8B9CB3] cursor-pointer transition rounded-lg justify-between
               ${
                 openMenu === "roles"
                   ? "text-indigo-600 dark:text-[#D8D8DD] dark:bg-[#080B2C] dark:border-indigo-600 font-semibold bg-blue-100 border-l-[3px]"
                   : "text-gray-600"
               }`}
-          >
-            <span className="flex items-center gap-3">
-              <PiCirclesThree />
-              <span>Roles & Permission</span>
-            </span>
-          </NavLink>
-          <NavLink
-            to="/activityLogs"
-            onClick={() => {
-              toggle("activity");
-            }}
-            className={`flex items-center gap-2 mt-2 px-4 p-2 w-full
+              >
+                <span className="flex items-center gap-3">
+                  <PiCirclesThree />
+                  <span>Roles & Permission</span>
+                </span>
+              </NavLink>
+              <NavLink
+                to="/activityLogs"
+                onClick={() => {
+                  toggle("activity");
+                }}
+                className={`flex items-center gap-2 mt-2 px-4 p-2 w-full
               hover:text-blue-600 dark:text-[#8B9CB3] cursor-pointer transition rounded-lg justify-between
               ${
                 openMenu === "activity"
                   ? "text-indigo-600 dark:text-[#D8D8DD] dark:bg-[#080B2C] dark:border-indigo-600 font-semibold bg-blue-100 border-l-[3px]"
                   : "text-gray-600"
               }`}
-          >
-            <span className="flex items-center gap-3">
-              <TbTopologyBus />
-              <span>Activity Logs</span>
-            </span>
-          </NavLink>
+              >
+                <span className="flex items-center gap-3">
+                  <TbTopologyBus />
+                  <span>Activity Logs</span>
+                </span>
+              </NavLink>
+            </>
+          )}
         </div>
         <div>
           <span className="text-sm font-semibold">Management</span>
@@ -503,24 +542,28 @@ function SidebarContent() {
               <span>Notification</span>
             </span>
           </NavLink>
-          <NavLink
-            to="/settings"
-            onClick={() => {
-              toggle("settings");
-            }}
-            className={`flex items-center gap-2 mt-2 px-4 p-2 w-full
+          {userDetails?.role === "Admin" && (
+            <>
+              <NavLink
+                to="/settings"
+                onClick={() => {
+                  toggle("settings");
+                }}
+                className={`flex items-center gap-2 mt-2 px-4 p-2 w-full
               hover:text-blue-600 dark:text-[#8B9CB3] cursor-pointer transition rounded-lg justify-between
               ${
                 openMenu === "settings"
                   ? "text-indigo-600 dark:text-[#D8D8DD] dark:bg-[#080B2C] dark:border-indigo-600 font-semibold bg-blue-100 border-l-[3px]"
                   : "text-gray-600"
               }`}
-          >
-            <span className="flex items-center gap-3">
-              <TbSettingsCog />
-              <span>Settings</span>
-            </span>
-          </NavLink>
+              >
+                <span className="flex items-center gap-3">
+                  <TbSettingsCog />
+                  <span>Settings</span>
+                </span>
+              </NavLink>
+            </>
+          )}
         </div>
         <div>
           <span className="text-sm font-semibold">Pages</span>
