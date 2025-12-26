@@ -24,17 +24,35 @@ import { auth, db } from "../firebase/firebase";
 import { doc, getDoc } from "firebase/firestore";
 
 function SidebarContent() {
-  const [openMenu, setOpenMenu] = useState(null);
+  const [openMenu, setOpenMenu] = useState([]);
   const location = useLocation();
+
+  const [userDetails, setUserDetails] = useState(() => {
+    const saved = localStorage.getItem("userData");
+    return saved ? JSON.parse(saved) : null;
+  });
+
   const toggle = (menu) => {
-    setOpenMenu(openMenu === menu ? null : menu);
+    if (userDetails?.role === "User") return;
+    setOpenMenu((prev) =>
+      prev.includes(menu) ? prev.filter((m) => m !== menu) : [...prev, menu]
+    );
   };
+
   useEffect(() => {
+    if (userDetails?.role === "User") {
+      setOpenMenu(["dashboard", "apps"]);
+    }
+  }, [userDetails]);
+
+  useEffect(() => {
+    if (userDetails?.role === "User") return;
+
     if (
       location.pathname.startsWith("/admin") ||
       location.pathname.startsWith("/user")
     ) {
-      setOpenMenu("dashboard");
+      setOpenMenu(["dashboard"]);
     }
 
     if (
@@ -53,84 +71,60 @@ function SidebarContent() {
       location.pathname.startsWith("/videocall") ||
       location.pathname.startsWith("/voicecall")
     ) {
-      setOpenMenu("apps");
+      setOpenMenu(["apps"]);
     }
 
-    if (location.pathname.startsWith("/members")) {
-      setOpenMenu("members");
-    }
-
-    if (location.pathname.startsWith("/teams")) {
-      setOpenMenu("teams");
-    }
-
-    if (location.pathname.startsWith("/clients")) {
-      setOpenMenu("clients");
-    }
-
-    if (location.pathname.startsWith("/roles")) {
-      setOpenMenu("roles");
-    }
-
-    if (location.pathname.startsWith("/activity")) {
-      setOpenMenu("activity");
-    }
-
-    if (location.pathname.startsWith("/notifications")) {
-      setOpenMenu("notifications");
-    }
-
-    if (location.pathname.startsWith("/settings")) {
-      setOpenMenu("settings");
-    }
+    if (location.pathname.startsWith("/members")) setOpenMenu(["members"]);
+    if (location.pathname.startsWith("/teams")) setOpenMenu(["teams"]);
+    if (location.pathname.startsWith("/clients")) setOpenMenu(["clients"]);
+    if (location.pathname.startsWith("/roles")) setOpenMenu(["roles"]);
+    if (location.pathname.startsWith("/activity")) setOpenMenu(["activity"]);
+    if (location.pathname.startsWith("/notifications"))
+      setOpenMenu(["notifications"]);
+    if (location.pathname.startsWith("/settings")) setOpenMenu(["settings"]);
 
     if (location.pathname.startsWith("/login")) {
-      setOpenMenu("login");
+      setOpenMenu(["login"]);
     }
 
     if (location.pathname.startsWith("/register")) {
-      setOpenMenu("register");
+      setOpenMenu(["register"]);
     }
 
     if (location.pathname.startsWith("/forgetPass")) {
-      setOpenMenu("forgetPass");
+      setOpenMenu(["forgetPass"]);
     }
 
     if (location.pathname.startsWith("/resetPass")) {
-      setOpenMenu("resetPass");
+      setOpenMenu(["resetPass"]);
     }
 
     if (location.pathname.startsWith("/emailVer")) {
-      setOpenMenu("emailVer");
+      setOpenMenu(["emailVer"]);
     }
 
     if (location.pathname.startsWith("/2step")) {
-      setOpenMenu("2step");
+      setOpenMenu(["2step"]);
     }
 
     if (location.pathname.startsWith("/error")) {
-      setOpenMenu("error");
+      setOpenMenu(["error"]);
     }
   }, [location.pathname]);
 
-  const [userDetails, setUserDetails] = useState(() => {
-    const saved = localStorage.getItem("userData");
-    return saved ? JSON.parse(saved) : null;
-  });
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(async (user) => {
-      if (!user) return;
-      const docRef = doc(db, "Users", user.uid);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        const data = docSnap.data();
-        localStorage.setItem("userData", JSON.stringify(data));
-        setUserDetails(data);
-      }
-    });
-    return () => unsubscribe();
-  }, []);
+  // useEffect(() => {
+  //   const unsubscribe = auth.onAuthStateChanged(async (user) => {
+  //     if (!user) return;
+  //     const docRef = doc(db, "Users", user.uid);
+  //     const docSnap = await getDoc(docRef);
+  //     if (docSnap.exists()) {
+  //       const data = docSnap.data();
+  //       localStorage.setItem("userData", JSON.stringify(data));
+  //       setUserDetails(data);
+  //     }
+  //   });
+  //   return () => unsubscribe();
+  // }, []);
 
   return (
     <>
@@ -146,7 +140,7 @@ function SidebarContent() {
             className={`flex items-center gap-2 mt-2 px-4 p-2 w-full
               hover:text-blue-600 dark:text-[#8B9CB3] cursor-pointer transition rounded-lg justify-between
               ${
-                openMenu === "dashboard"
+                openMenu.includes("dashboard")
                   ? "text-indigo-600 dark:text-[#D8D8DD] dark:bg-[#080B2C] dark:border-indigo-600 font-semibold bg-blue-100 border-l-[3px]"
                   : "text-gray-600"
               }`}
@@ -156,14 +150,14 @@ function SidebarContent() {
               <span>Dashboard</span>
             </span>
 
-            {openMenu === "dashboard" ? (
+            {openMenu.includes("dashboard") ? (
               <FaChevronDown className="text-[11px] font-normal" />
             ) : (
               <FaChevronRight className="text-[11px] font-normal" />
             )}
           </button>
           {/* DROPDOWN CONTENT */}
-          {openMenu === "dashboard" && (
+          {openMenu.includes("dashboard") && (
             <div className="ml-8 mt-1 text-sm">
               {userDetails?.role === "Admin" && (
                 <>
@@ -209,7 +203,7 @@ function SidebarContent() {
             className={`flex items-center gap-2 px-4 p-2 w-full
               hover:text-blue-600 dark:text-[#8B9CB3] cursor-pointer transition rounded-lg justify-between
               ${
-                openMenu === "apps"
+                openMenu.includes("apps")
                   ? "text-indigo-600 dark:text-[#D8D8DD] dark:bg-[#080B2C] dark:border-indigo-600 font-semibold bg-blue-100 border-l-[3px]"
                   : "text-gray-600"
               }`}
@@ -219,14 +213,14 @@ function SidebarContent() {
               <span>Application</span>
             </span>
 
-            {openMenu === "apps" ? (
+            {openMenu.includes("apps") ? (
               <FaChevronDown className="text-[11px] font-normal" />
             ) : (
               <FaChevronRight className="text-[11px] font-normal" />
             )}
           </button>
           {/* DROPDOWN CONTENT */}
-          {openMenu === "apps" && (
+          {openMenu.includes("apps") && (
             <div className="ml-8 mt-1 text-sm space-y-1">
               <NavLink
                 to="/projects"
@@ -431,7 +425,7 @@ function SidebarContent() {
                 className={`flex items-center gap-2 mt-2 px-4 p-2 w-full
               hover:text-blue-600 dark:text-[#8B9CB3] cursor-pointer transition rounded-lg justify-between
               ${
-                openMenu === "members"
+                openMenu.includes("members")
                   ? "text-indigo-600 dark:text-[#D8D8DD] dark:bg-[#080B2C] dark:border-indigo-600 font-semibold bg-blue-100 border-l-[3px]"
                   : "text-gray-600"
               }`}
@@ -449,7 +443,7 @@ function SidebarContent() {
                 className={`flex items-center gap-2 mt-2 px-4 p-2 w-full
               hover:text-blue-600 dark:text-[#8B9CB3] cursor-pointer transition rounded-lg justify-between
               ${
-                openMenu === "teams"
+                openMenu.includes("teams")
                   ? "text-indigo-600 dark:text-[#D8D8DD] dark:bg-[#080B2C] dark:border-indigo-600 font-semibold bg-blue-100 border-l-[3px]"
                   : "text-gray-600"
               }`}
@@ -470,7 +464,7 @@ function SidebarContent() {
             className={`flex items-center gap-2 mt-2 px-4 p-2 w-full
               hover:text-blue-600 dark:text-[#8B9CB3] cursor-pointer transition rounded-lg justify-between
               ${
-                openMenu === "clients"
+                openMenu.includes("clients")
                   ? "text-indigo-600 dark:text-[#D8D8DD] dark:bg-[#080B2C] dark:border-indigo-600 font-semibold bg-blue-100 border-l-[3px]"
                   : "text-gray-600"
               }`}
@@ -490,7 +484,7 @@ function SidebarContent() {
                 className={`flex items-center gap-2 mt-2 px-4 p-2 w-full
               hover:text-blue-600 dark:text-[#8B9CB3] cursor-pointer transition rounded-lg justify-between
               ${
-                openMenu === "roles"
+                openMenu.includes("roles")
                   ? "text-indigo-600 dark:text-[#D8D8DD] dark:bg-[#080B2C] dark:border-indigo-600 font-semibold bg-blue-100 border-l-[3px]"
                   : "text-gray-600"
               }`}
@@ -508,7 +502,7 @@ function SidebarContent() {
                 className={`flex items-center gap-2 mt-2 px-4 p-2 w-full
               hover:text-blue-600 dark:text-[#8B9CB3] cursor-pointer transition rounded-lg justify-between
               ${
-                openMenu === "activity"
+                openMenu.includes("activity")
                   ? "text-indigo-600 dark:text-[#D8D8DD] dark:bg-[#080B2C] dark:border-indigo-600 font-semibold bg-blue-100 border-l-[3px]"
                   : "text-gray-600"
               }`}
@@ -532,7 +526,7 @@ function SidebarContent() {
             className={`flex items-center gap-2 mt-2 px-4 p-2 w-full
               hover:text-blue-600 dark:text-[#8B9CB3] cursor-pointer transition rounded-lg justify-between
               ${
-                openMenu === "notifications"
+                openMenu.includes("notifications")
                   ? "text-indigo-600 dark:text-[#D8D8DD] dark:bg-[#080B2C] dark:border-indigo-600 font-semibold bg-blue-100 border-l-[3px]"
                   : "text-gray-600"
               }`}
@@ -552,7 +546,7 @@ function SidebarContent() {
                 className={`flex items-center gap-2 mt-2 px-4 p-2 w-full
               hover:text-blue-600 dark:text-[#8B9CB3] cursor-pointer transition rounded-lg justify-between
               ${
-                openMenu === "settings"
+                openMenu.includes("settings")
                   ? "text-indigo-600 dark:text-[#D8D8DD] dark:bg-[#080B2C] dark:border-indigo-600 font-semibold bg-blue-100 border-l-[3px]"
                   : "text-gray-600"
               }`}
@@ -565,7 +559,7 @@ function SidebarContent() {
             </>
           )}
         </div>
-        <div>
+        {/* <div>
           <span className="text-sm font-semibold">Pages</span>
 
           <NavLink
@@ -576,7 +570,7 @@ function SidebarContent() {
             className={`flex items-center gap-2 mt-2 px-4 p-2 w-full
               hover:text-blue-600 dark:text-[#8B9CB3] cursor-pointer transition rounded-lg justify-between
               ${
-                openMenu === "login"
+                openMenu.includes("login")
                   ? "text-indigo-600 dark:text-[#D8D8DD] dark:bg-[#080B2C] dark:border-indigo-600 font-semibold bg-blue-100 border-l-[3px]"
                   : "text-gray-600"
               }`}
@@ -694,7 +688,7 @@ function SidebarContent() {
               <span>Error Pages</span>
             </span>
           </NavLink>
-        </div>
+        </div> */}
       </div>
     </>
   );

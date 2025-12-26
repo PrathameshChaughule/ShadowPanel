@@ -6,7 +6,6 @@ import SidebarContent from "./SidebarContent";
 import Footer from "./Footer";
 import { useEffect, useState } from "react";
 import { LuSun } from "react-icons/lu";
-import { doSignOut } from "../firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/authContext";
 import Profile from "./Profile";
@@ -31,7 +30,7 @@ function Navbar({ children }) {
     document.documentElement.classList.toggle("dark", storedTheme === "dark");
   });
   window.localStorage.setItem("isAuth", userLoggedIn);
-  const userData = JSON.parse(localStorage.getItem("userData")) || [];
+  const userData = JSON.parse(localStorage.getItem("userData"));
 
   return (
     <div className="h-screen flex overflow-hidden">
@@ -116,13 +115,8 @@ function Navbar({ children }) {
               >
                 {userData ? (
                   <span className="text-sm text-amber-600 bg-amber-300 rounded-full font-semibold p-[5px] px-[7px]">
-                    {userData?.firstName?.charAt(0) ||
-                    userData?.role === "Admin"
-                      ? "A"
-                      : "U"}
-                    {userData?.lastName?.charAt(0) || userData?.role === "Admin"
-                      ? "D"
-                      : "S"}
+                    {userData?.firstName?.charAt(0)}
+                    {userData?.lastName?.charAt(0)}
                   </span>
                 ) : (
                   <CgProfile className="text-[24px] cursor-pointer" />
@@ -131,7 +125,10 @@ function Navbar({ children }) {
             )}
           </div>
         </div>
-        <div className="overflow-y-auto h-screen flex flex-col justify-between dark:text-white dark:bg-[#0C0C20]">
+        <div
+          onClick={() => setIsProfileOpen(false)}
+          className="overflow-y-auto h-screen flex flex-col justify-between dark:text-white dark:bg-[#0C0C20]"
+        >
           {isProfileOpen && <Profile />}
           {children}
           <Footer />

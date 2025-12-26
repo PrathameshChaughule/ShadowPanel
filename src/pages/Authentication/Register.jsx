@@ -4,11 +4,7 @@ import { FiUser } from "react-icons/fi";
 import { GoEye, GoEyeClosed } from "react-icons/go";
 import { NavLink, useNavigate } from "react-router-dom";
 import AuthLeftSide from "../../components/AuthLeftSide";
-import {
-  doCreateUserWithEmailAndPassword,
-  doSignInWithGoogle,
-} from "../../firebase/auth";
-import { useAuth } from "../../contexts/authContext";
+import { doCreateUserWithEmailAndPassword } from "../../firebase/auth";
 import { toast } from "react-toastify";
 import { auth, db } from "../../firebase/firebase";
 import { doc, setDoc } from "firebase/firestore";
@@ -73,32 +69,32 @@ function Register() {
     }
   };
 
-  const onGoogleSignIn = async (e) => {
-    e.preventDefault();
-    if (isRegistering) return;
+  // const onGoogleSignIn = async (e) => {
+  //   e.preventDefault();
+  //   if (isRegistering) return;
 
-    setIsRegistering(true);
+  //   setIsRegistering(true);
 
-    try {
-      const { user, userData } = await doSignInWithGoogle();
+  //   try {
+  //     const { user, userData } = await doSignInWithGoogle();
 
-      localStorage.setItem("isAuth", "true");
-      localStorage.setItem("userData", JSON.stringify(userData));
+  //     localStorage.setItem("isAuth", "true");
+  //     localStorage.setItem("userData", JSON.stringify(userData));
 
-      toast.success("Login successful 🎉");
+  //     toast.success("Login successful 🎉");
 
-      if (userData.role === "Admin") {
-        navigate("/admin", { replace: true });
-      } else {
-        navigate("/user", { replace: true });
-      }
-    } catch (err) {
-      console.error(err);
-      toast.error("Google sign-in failed");
-    } finally {
-      setIsRegistering(false);
-    }
-  };
+  //     if (userData.role === "Admin") {
+  //       navigate("/admin", { replace: true });
+  //     } else {
+  //       navigate("/user", { replace: true });
+  //     }
+  //   } catch (err) {
+  //     console.error(err);
+  //     toast.error("Google sign-in failed");
+  //   } finally {
+  //     setIsRegistering(false);
+  //   }
+  // };
 
   return (
     <>
@@ -307,7 +303,7 @@ function Register() {
                 <span>Sign Up</span>
               </button>
 
-              <div className="flex justify-between items-center">
+              {/* <div className="flex justify-between items-center">
                 <div className="bg-[#CED2D4] h-[1.6px] w-[30%] sm:w-[37%]"></div>
                 <span className="text-[13px] text-center text-[#6D777F]">
                   Or Sign Up With
@@ -333,7 +329,7 @@ function Register() {
                 <NavLink to="/login" className="underline">
                   Sign In
                 </NavLink>
-              </div>
+              </div> */}
             </form>
           </div>
         </div>

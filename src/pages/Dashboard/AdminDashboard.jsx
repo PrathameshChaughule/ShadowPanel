@@ -1,4 +1,3 @@
-import React from "react";
 import Navbar from "../../components/Navbar";
 import { MdOutlineArrowOutward } from "react-icons/md";
 import { GoArrowDownLeft } from "react-icons/go";
@@ -23,7 +22,6 @@ import {
   Cell,
 } from "recharts";
 import { useAuth } from "../../contexts/authContext";
-import { Navigate } from "react-router-dom";
 
 function AdminDashboard() {
   const { userLoggedIn } = useAuth();

@@ -6,7 +6,7 @@ function AdminRoute() {
 
   if (!role) return null;
 
-  return role.role === "Admin" ? <Outlet /> : <Navigate to="/user" replace />;
+  return role === "Admin" ? <Outlet /> : <Navigate to="/user" replace />;
 }
 
 export default AdminRoute;

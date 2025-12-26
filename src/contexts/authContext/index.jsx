@@ -16,32 +16,37 @@ export function AuthProvider({ children }) {
   const [role, setRole] = useState(null);
 
   useEffect(() => {
-    if (!currentUser) return;
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        setCurrentUser(null);
+        setUserLoggedIn(false);
+        setRole(null);
+        setLoading(false);
+        return;
+      }
 
-    const fetchRole = async () => {
-      const ref = doc(db, "users", currentUser.uid);
-      const snap = await getDoc(ref);
-      if (snap.exists()) setRole(snap.data().role);
-    };
+      setCurrentUser(user);
+      setUserLoggedIn(true);
 
-    fetchRole();
-  }, [currentUser]);
+      try {
+        const ref = doc(db, "Users", user.uid);
+        const snap = await getDoc(ref);
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, initializeUser);
+        if (snap.exists()) {
+          setRole(snap.data().role);
+        } else {
+          console.warn("User Firestore record missing");
+          setRole(null);
+        }
+      } catch (err) {
+        console.error("Error fetching role:", err);
+      }
+
+      setLoading(false);
+    });
+
     return unsubscribe;
   }, []);
-
-  async function initializeUser(user) {
-    if (user) {
-      setCurrentUser({ ...user });
-      setUserLoggedIn(true);
-    } else {
-      setCurrentUser(null);
-      setUserLoggedIn(false);
-    }
-    setLoading(false);
-  }
 
   const value = {
     currentUser,

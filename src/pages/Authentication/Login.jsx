@@ -3,11 +3,10 @@ import { CiMail } from "react-icons/ci";
 import { GoEye, GoEyeClosed } from "react-icons/go";
 import { Navigate, NavLink, useNavigate } from "react-router-dom";
 import AuthLeftSide from "../../components/AuthLeftSide";
-import {
-  doSignInWithEmailAndPassword,
-  doSignInWithGoogle,
-} from "../../firebase/auth";
+import { doSignInWithEmailAndPassword } from "../../firebase/auth";
 import { toast } from "react-toastify";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../firebase/firebase";
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -18,56 +17,67 @@ function Login() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (!isSigningIn) {
-      setIsSigningIn(true);
-      try {
-        await doSignInWithEmailAndPassword(email, password);
-        const userData = JSON.parse(localStorage.getItem("userData")) || [];
-
-        if (userData?.role === "Admin") {
-          navigate("/", { replace: true });
-        } else {
-          navigate("/user", { replace: true });
-        }
-        toast.success("Login Successfully 🎉");
-      } catch (error) {
-        if (error.code === "auth/invalid-credential") {
-          toast.error("Invalid email or password");
-        } else {
-          toast.error("Login failed");
-        }
-      } finally {
-        setIsSigningIn(false);
-      }
-    }
-  };
-
-  const onGoogleSignIn = async (e) => {
-    e.preventDefault();
     if (isSigningIn) return;
 
     setIsSigningIn(true);
 
     try {
-      const { user, userData } = await doSignInWithGoogle();
+      const userCredential = await doSignInWithEmailAndPassword(
+        email,
+        password
+      );
+      const uid = userCredential.user.uid;
 
-      localStorage.setItem("isAuth", "true");
+      const docRef = doc(db, "Users", uid);
+      const docSnap = await getDoc(docRef);
+
+      if (!docSnap.exists()) {
+        throw new Error("User record not found");
+      }
+
+      const userData = docSnap.data();
       localStorage.setItem("userData", JSON.stringify(userData));
 
-      toast.success("Login successful 🎉");
-
       if (userData.role === "Admin") {
-        navigate("/admin", { replace: true });
+        navigate("/", { replace: true });
       } else {
         navigate("/user", { replace: true });
       }
-    } catch (err) {
-      console.error(err);
-      toast.error("Google sign-in failed");
+
+      toast.success("Login Successfully 🎉");
+    } catch (error) {
+      console.error("Firebase login error:", error);
+      if (error.code === "auth/invalid-credential") {
+        toast.error("Invalid email or password");
+      } else {
+        toast.error("Login failed");
+      }
     } finally {
       setIsSigningIn(false);
     }
   };
+
+  // const onGoogleSignIn = async (e) => {
+  //   e.preventDefault();
+  //   if (isSigningIn) return;
+  //   setIsSigningIn(true);
+  //   try {
+  //     const { user, userData } = await doSignInWithGoogle();
+  //     localStorage.setItem("isAuth", "true");
+  //     localStorage.setItem("userData", JSON.stringify(userData));
+  //     toast.success("Login successful 🎉");
+  //     if (userData.role === "Admin") {
+  //       navigate("/admin", { replace: true });
+  //     } else {
+  //       navigate("/user", { replace: true });
+  //     }
+  //   } catch (err) {
+  //     console.error(err);
+  //     toast.error("Google sign-in failed");
+  //   } finally {
+  //     setIsSigningIn(false);
+  //   }
+  // };
 
   return (
     <div>
@@ -153,7 +163,7 @@ function Login() {
               >
                 <span>Sign In</span>
               </button>
-              <div className="flex justify-between items-center">
+              {/* <div className="flex justify-between items-center">
                 <div className="bg-[#CED2D4] h-[1.6px] w-[30%] sm:w-[37%]"></div>
                 <span className="text-[13px] text-center text-[#6D777F]">
                   Or Sign In With
@@ -179,7 +189,7 @@ function Login() {
                 <NavLink to="/register" className="underline">
                   Get Started for Free
                 </NavLink>
-              </div>
+              </div> */}
             </form>
           </div>
         </div>

@@ -3,10 +3,10 @@ import { useAuth } from "../contexts/authContext";
 
 function HomeRedirect() {
   const { role, loading } = useAuth();
-
+  
   if (!role) return null;
 
-  return role.role === "Admin" ? (
+  return role === "Admin" ? (
     <Navigate to="/admin" replace />
   ) : (
     <Navigate to="/user" replace />
