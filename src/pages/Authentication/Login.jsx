@@ -42,14 +42,30 @@ function Login() {
     }
   };
 
-  const onGoogleSignIn = (e) => {
+  const onGoogleSignIn = async (e) => {
     e.preventDefault();
-    if (!isSigningIn) {
-      setIsSigningIn(true);
-      doSignInWithGoogle().catch((err) => {
-        setIsSigningIn(false);
-      });
-      navigate("/user", { replace: true });
+    if (isSigningIn) return;
+
+    setIsSigningIn(true);
+
+    try {
+      const { user, userData } = await doSignInWithGoogle();
+
+      localStorage.setItem("isAuth", "true");
+      localStorage.setItem("userData", JSON.stringify(userData));
+
+      toast.success("Login successful 🎉");
+
+      if (userData.role === "Admin") {
+        navigate("/admin", { replace: true });
+      } else {
+        navigate("/user", { replace: true });
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("Google sign-in failed");
+    } finally {
+      setIsSigningIn(false);
     }
   };
 

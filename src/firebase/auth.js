@@ -1,4 +1,5 @@
-import { auth } from "./firebase";
+import { doc, getDoc, serverTimestamp, setDoc } from "firebase/firestore";
+import { auth, db } from "./firebase";
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
@@ -17,7 +18,29 @@ export const doSignInWithEmailAndPassword = (email, password) => {
 export const doSignInWithGoogle = async () => {
   const provider = new GoogleAuthProvider();
   const result = await signInWithPopup(auth, provider);
-  return result;
+  const user = result.user;
+
+  const userRef = doc(db, "users", user.uid);
+  let userData;
+
+  const snap = await getDoc(userRef);
+
+  if (!snap.exists()) {
+    userData = {
+      uid: user.uid,
+      email: user.email,
+      name: user.displayName || "",
+      role: "User",
+      provider: "google",
+      createdAt: serverTimestamp(),
+    };
+
+    await setDoc(userRef, userData);
+  } else {
+    userData = snap.data();
+  }
+
+  return { user, userData };
 };
 
 export const doSignOut = () => {

@@ -73,14 +73,30 @@ function Register() {
     }
   };
 
-  const onGoogleSignIn = (e) => {
+  const onGoogleSignIn = async (e) => {
     e.preventDefault();
-    if (!isRegistering) {
-      setIsRegistering(true);
-      doSignInWithGoogle().catch((err) => {
-        setIsRegistering(false);
-      });
-      navigate("/user", { replace: true });
+    if (isRegistering) return;
+
+    setIsRegistering(true);
+
+    try {
+      const { user, userData } = await doSignInWithGoogle();
+
+      localStorage.setItem("isAuth", "true");
+      localStorage.setItem("userData", JSON.stringify(userData));
+
+      toast.success("Login successful 🎉");
+
+      if (userData.role === "Admin") {
+        navigate("/admin", { replace: true });
+      } else {
+        navigate("/user", { replace: true });
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("Google sign-in failed");
+    } finally {
+      setIsRegistering(false);
     }
   };
 

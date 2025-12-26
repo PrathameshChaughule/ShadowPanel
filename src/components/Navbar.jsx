@@ -116,8 +116,13 @@ function Navbar({ children }) {
               >
                 {userData ? (
                   <span className="text-sm text-amber-600 bg-amber-300 rounded-full font-semibold p-[5px] px-[7px]">
-                    {userData.firstName.charAt(0)}
-                    {userData.lastName.charAt(0)}
+                    {userData?.firstName?.charAt(0) ||
+                    userData?.role === "Admin"
+                      ? "A"
+                      : "U"}
+                    {userData?.lastName?.charAt(0) || userData?.role === "Admin"
+                      ? "D"
+                      : "S"}
                   </span>
                 ) : (
                   <CgProfile className="text-[24px] cursor-pointer" />

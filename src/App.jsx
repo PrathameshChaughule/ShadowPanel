@@ -32,7 +32,6 @@ import { AuthProvider } from "./contexts/authContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProtectedRoute from "./Routes/ProtectedRoute";
-import UserRoute from "./Routes/UserRoute";
 import AdminRoute from "./Routes/AdminRoute";
 import HomeRedirect from "./Routes/HomeRedirect";
 

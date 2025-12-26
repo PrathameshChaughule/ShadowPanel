@@ -11,6 +11,7 @@ import { ThreeCircles } from "react-loader-spinner";
 function Profile() {
   const navigate = useNavigate();
   const userDetails = JSON.parse(localStorage.getItem("userData"));
+
   return (
     <div className="bg-white shadow-sm z-100 dark:bg-[#030318] shadow-gray-400 rounded p-4 w-80 h-fit absolute right-4 mt-1">
       {userDetails ? (
@@ -18,18 +19,24 @@ function Profile() {
           <div className="px-2 rounded text-center text-2xl mb-2.5 bg-[#01B664]">
             <span className="font-semibold text-white">{userDetails.role}</span>
           </div>
-          <div className="flex items-center rounded justify-between p-4 px-3 bg-[#F5F6FA] dark:bg-[#0C0C20]">
+          <div className="flex overflow-hidden items-center rounded justify-between p-4 px-3 bg-[#F5F6FA] dark:bg-[#0C0C20]">
             <div className="flex items-center gap-3">
               <div className="p-[9px] px-[11px] flex items-center rounded-full justify-center bg-amber-400/40 dark:bg-amber-300">
                 <p className="font-bold w-full h-full text-amber-600 text-xl">
-                  {userDetails.firstName.charAt(0)}
-                  {userDetails.lastName.charAt(0)}
+                  {userDetails?.firstName?.charAt(0) ||
+                  userDetails?.role === "Admin"
+                    ? "A"
+                    : "U"}
+                  {userDetails?.lastName?.charAt(0) ||
+                  userDetails?.role === "Admin"
+                    ? "D"
+                    : "S"}
                 </p>
               </div>
               <div className="flex flex-col">
                 <div className="font-semibold flex flex-wrap gap-1 leading-4">
-                  <span>{userDetails.firstName}</span>
-                  <span>{userDetails.lastName}</span>
+                  <span>{userDetails?.firstName || "Name"}</span>
+                  <span>{userDetails?.lastName || ""}</span>
                 </div>
                 <span className="dark:text-[#D6DADF]">{userDetails.email}</span>
               </div>
@@ -43,28 +50,36 @@ function Profile() {
               <RiUser3Line />
               Profile Settings
             </Link>
-            <Link
-              to="/settings"
-              className="py-1 dark:text-[#D6DADF] cursor-pointer hover:text-blue-500 flex gap-1 font-medium text-gray-700 items-center"
-            >
-              <IoSettingsOutline />
-              Settings
-            </Link>
-            <Link
-              to="/email"
-              className="py-1 dark:text-[#D6DADF] cursor-pointer hover:text-blue-500 flex gap-1 font-medium text-gray-700 items-center"
-            >
-              <MdOutlineMailOutline />
-              Mail Box
-            </Link>
+            {userDetails?.role === "Admin" && (
+              <Link
+                to="/settings"
+                className="py-1 dark:text-[#D6DADF] cursor-pointer hover:text-blue-500 flex gap-1 font-medium text-gray-700 items-center"
+              >
+                <IoSettingsOutline />
+                Settings
+              </Link>
+            )}
+
             <hr className="my-2 border-gray-400" />
-            <Link
-              to="/activityLogs"
-              className="py-1 dark:text-[#D6DADF] cursor-pointer hover:text-blue-500 flex gap-1 font-medium text-gray-700 items-center"
-            >
-              <PiLifebuoy />
-              Activity Log
-            </Link>
+            {userDetails?.role === "Admin" && (
+              <>
+                <Link
+                  to="/email"
+                  className="py-1 dark:text-[#D6DADF] cursor-pointer hover:text-blue-500 flex gap-1 font-medium text-gray-700 items-center"
+                >
+                  <MdOutlineMailOutline />
+                  Mail Box
+                </Link>
+                <Link
+                  to="/activityLogs"
+                  className="py-1 dark:text-[#D6DADF] cursor-pointer hover:text-blue-500 flex gap-1 font-medium text-gray-700 items-center"
+                >
+                  <PiLifebuoy />
+                  Activity Log
+                </Link>
+              </>
+            )}
+
             <Link
               to="/social"
               className="py-1 dark:text-[#D6DADF] cursor-pointer hover:text-blue-500 flex gap-1 font-medium text-gray-700 items-center"

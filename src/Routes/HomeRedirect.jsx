@@ -1,7 +1,8 @@
 import { Navigate } from "react-router-dom";
+import { useAuth } from "../contexts/authContext";
 
 function HomeRedirect() {
-  const role = JSON.parse(localStorage.getItem("userData"));
+  const { role, loading } = useAuth();
 
   if (!role) return null;
 
