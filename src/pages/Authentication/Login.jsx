@@ -22,7 +22,7 @@ function Login() {
       setIsSigningIn(true);
       try {
         await doSignInWithEmailAndPassword(email, password);
-        const userData = JSON.parse(localStorage.getItem("userData"));
+        const userData = JSON.parse(localStorage.getItem("userData")) || [];
 
         if (userData?.role === "Admin") {
           navigate("/", { replace: true });

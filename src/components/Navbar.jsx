@@ -31,7 +31,7 @@ function Navbar({ children }) {
     document.documentElement.classList.toggle("dark", storedTheme === "dark");
   });
   window.localStorage.setItem("isAuth", userLoggedIn);
-  const userData = JSON.parse(localStorage.getItem("userData"));
+  const userData = JSON.parse(localStorage.getItem("userData")) || [];
 
   return (
     <div className="h-screen flex overflow-hidden">

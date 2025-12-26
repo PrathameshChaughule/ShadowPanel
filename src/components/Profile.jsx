@@ -10,7 +10,7 @@ import { ThreeCircles } from "react-loader-spinner";
 
 function Profile() {
   const navigate = useNavigate();
-  const userDetails = JSON.parse(localStorage.getItem("userData"));
+  const userDetails = JSON.parse(localStorage.getItem("userData")) || [];
 
   return (
     <div className="bg-white shadow-sm z-100 dark:bg-[#030318] shadow-gray-400 rounded p-4 w-80 h-fit absolute right-4 mt-1">
